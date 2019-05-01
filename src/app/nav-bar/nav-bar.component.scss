@@ -5,3 +5,11 @@
 .toolbar-space-filler {
   flex: 1 1 auto;
 }
+
+mat-toolbar {
+  border-radius: 7px;
+}
+
+#site-name-button {
+  font-size: 24px;
+}
