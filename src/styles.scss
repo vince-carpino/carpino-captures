@@ -1,6 +1,15 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "./app/styles/vars";
 
-html {
+body {
   background: $matte-black;
+}
+
+mat-card {
+  border-radius: 7px !important;
+}
+
+.page-title {
+  text-align: center;
+  text-transform: uppercase;
 }

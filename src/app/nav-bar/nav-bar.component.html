@@ -10,10 +10,9 @@
       mat-button
       (click)="navButtonClicked(link)"
       [routerLink]="[getLinkFromName(link)]"
-      svgIcon="../../assets/instagram-icon.svg"
     >
       <mat-icon
-        *ngIf="getSvgFromLinkName(link) != ''"
+        *ngIf="getSvgFromLinkName(link)"
         [svgIcon]="getSvgFromLinkName(link)"
       ></mat-icon>
       {{ link }}

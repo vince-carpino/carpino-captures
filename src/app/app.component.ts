@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AppComponent {
   iconsToRegister: string[] = [
+    'about-me-icon',
     'home-icon',
     'instagram-icon',
     'email-icon'

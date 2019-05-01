@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   siteName = 'Carpino Captures';
-  linkNames = ['Home', 'Instagram', 'Contact'];
+  linkNames = ['Home', 'Instagram', 'About Me', 'Contact'];
   instagramUrl = 'https://www.instagram.com/vince_carpino/';
 
   constructor() {}
@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
 
   navButtonClicked(link: string) {
     switch (link) {
-      case 'Instagram':
+      case this.linkNames[1]:
         this.openLink(this.instagramUrl);
         break;
       default:
@@ -28,7 +28,10 @@ export class NavBarComponent implements OnInit {
     let link = '';
 
     switch (linkName) {
-      case 'Contact':
+      case this.linkNames[2]:
+        link = '/about';
+        break;
+      case this.linkNames[3]:
         link = '/contact';
         break;
       default:
@@ -42,13 +45,16 @@ export class NavBarComponent implements OnInit {
     let svgName = '';
 
     switch (linkName) {
-      case 'Home':
+      case this.linkNames[0]:
         svgName = 'home-icon';
         break;
-      case 'Instagram':
+      case this.linkNames[1]:
         svgName = 'instagram-icon';
         break;
-      case 'Contact':
+      case this.linkNames[2]:
+        svgName = 'about-me-icon';
+        break;
+      case this.linkNames[3]:
         svgName = 'email-icon';
         break;
       default:
