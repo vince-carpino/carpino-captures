@@ -38,6 +38,26 @@ export class NavBarComponent implements OnInit {
     return link;
   }
 
+  getSvgFromLinkName(linkName: string): string {
+    let svgName = '';
+
+    switch (linkName) {
+      case 'Home':
+        svgName = 'home-icon';
+        break;
+      case 'Instagram':
+        svgName = 'instagram-icon';
+        break;
+      case 'Contact':
+        svgName = 'email-icon';
+        break;
+      default:
+        break;
+    }
+
+    return svgName;
+  }
+
   openLink(url: string) {
     window.open(url);
   }

@@ -1,8 +1,21 @@
 <mat-toolbar>
-  <span>{{ siteName }}</span>
+  <span>
+    <button mat-button [routerLink]="'/'" id="site-name-button">
+      {{ siteName }}
+    </button>
+  </span>
   <span class="toolbar-space-filler"></span>
   <span *ngFor="let link of linkNames" class="nav-bar-link">
-    <button mat-button (click)="navButtonClicked(link)" [routerLink]="[getLinkFromName(link)]">
+    <button
+      mat-button
+      (click)="navButtonClicked(link)"
+      [routerLink]="[getLinkFromName(link)]"
+      svgIcon="../../assets/instagram-icon.svg"
+    >
+      <mat-icon
+        *ngIf="getSvgFromLinkName(link) != ''"
+        [svgIcon]="getSvgFromLinkName(link)"
+      ></mat-icon>
       {{ link }}
     </button>
   </span>
