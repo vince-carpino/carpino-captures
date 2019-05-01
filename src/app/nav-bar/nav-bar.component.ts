@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   siteName = 'Carpino Captures';
-  links = ['Home', 'Instagram', 'Contact'];
+  linkNames = ['Home', 'Instagram', 'Contact'];
   instagramUrl = 'https://www.instagram.com/vince_carpino/';
 
   constructor() {}
@@ -22,6 +22,20 @@ export class NavBarComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  getLinkFromName(linkName: string): string {
+    let link = '';
+
+    switch (linkName) {
+      case 'Contact':
+        link = '/contact';
+        break;
+      default:
+        break;
+    }
+
+    return link;
   }
 
   openLink(url: string) {

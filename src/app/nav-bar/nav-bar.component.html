@@ -1,8 +1,8 @@
 <mat-toolbar>
   <span>{{ siteName }}</span>
   <span class="toolbar-space-filler"></span>
-  <span *ngFor="let link of links" class="nav-bar-link">
-    <button mat-button (click)="navButtonClicked(link)">
+  <span *ngFor="let link of linkNames" class="nav-bar-link">
+    <button mat-button (click)="navButtonClicked(link)" [routerLink]="[getLinkFromName(link)]">
       {{ link }}
     </button>
   </span>
