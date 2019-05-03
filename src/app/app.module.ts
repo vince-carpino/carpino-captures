@@ -1,36 +1,32 @@
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ContactComponent } from './contact/contact.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
     AboutComponent,
     ContactComponent,
     PortfolioComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatButtonModule,
     MatCardModule,
-    MatIconModule,
-    MatToolbarModule,
+    SharedModule,
     RouterModule.forRoot([
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
