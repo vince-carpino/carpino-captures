@@ -1,0 +1,12 @@
+.two-columns {
+  display: flex;
+
+  & > mat-card-header {
+    width: 50%;
+  }
+}
+
+#bio {
+  text-align: center;
+  // text-align: justify;
+}
