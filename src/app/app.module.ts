@@ -5,13 +5,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { MatCardModule } from '@angular/material/card';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatToolbarModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { AboutComponent } from './about/about.component';
-import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,8 +29,10 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatButtonModule,
     MatCardModule,
-    SharedModule,
+    MatIconModule,
+    MatToolbarModule,
     RouterModule.forRoot([
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
