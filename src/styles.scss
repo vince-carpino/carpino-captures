@@ -5,20 +5,18 @@
 }
 
 body {
-  background: $matte-black;
+  background: white;
+  margin: 0;
 }
 
 .page-title {
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
+  color: black;
 }
 
 html,
 body {
   height: 100%;
-}
-
-body {
-  margin: 0;
 }

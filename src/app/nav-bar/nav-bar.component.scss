@@ -1,5 +1,11 @@
+@import '../styles/vars';
+
 .nav-bar-link {
   padding: 0 14px;
+
+  button {
+    text-transform: lowercase;
+  }
 }
 
 .toolbar-space-filler {
@@ -14,10 +20,11 @@ mat-toolbar {
   right: 0;
   // position: fixed;
   z-index: 100;
+  background-color: $fui-clouds;
 }
-
 
 #site-name-button {
   font-size: 24px;
   text-transform: uppercase;
+  font-weight: bold;
 }

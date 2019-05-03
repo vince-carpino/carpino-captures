@@ -1,12 +1,40 @@
+@import '../styles/vars';
+
 .two-columns {
   display: flex;
-
-  & > mat-card-header {
+  & > * {
+    // border: 3px solid black;
     width: 50%;
+    // margin: 3rem;
+  }
+
+  h3 {
+    // width: 50%;
   }
 }
 
-#bio {
+h1 {
   text-align: center;
-  // text-align: justify;
+  // border: 3px solid black;
+}
+
+#bio {
+  text-align: justify;
+  text-align-last: center;
+  border: 5px solid black;
+  margin: 2rem;
+  padding: 2rem 4rem;
+  background-color: $fui-clouds;
+  width: 30%;
+}
+
+#pic {
+  width: 50%;
+  margin: 2rem;
+  padding-top: 3vh;
+
+  img {
+    position: inherit;
+    width: 100%;
+  }
 }
