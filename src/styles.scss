@@ -1,18 +1,24 @@
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import "./app/styles/vars";
+@import './app/styles/vars';
+
+* {
+  font-family: 'Baloo', 'Righteous', 'Helvetica Neue', sans-serif;
+}
 
 body {
   background: $matte-black;
 }
 
-mat-card {
-  border-radius: 7px !important;
-}
-
 .page-title {
   text-align: center;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
