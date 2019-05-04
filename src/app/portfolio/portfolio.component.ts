@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface Picture {
-  url: string;
-  orientation: number;
-}
+import { Picture } from './picture/picture';
 
 @Component({
   templateUrl: './portfolio.component.html',
@@ -15,6 +11,8 @@ export class PortfolioComponent implements OnInit {
   col1: Picture[] = [];
   col2: Picture[] = [];
   col3: Picture[] = [];
+
+  allCols: Picture[][] = [this.col1, this.col2, this.col3];
 
   master: Picture[] = [
     { url: '/src/assets/photos/01.jpg', orientation: 1 },
@@ -33,6 +31,8 @@ export class PortfolioComponent implements OnInit {
     { url: '/src/assets/photos/14.jpg', orientation: 1 },
     { url: '/src/assets/photos/15.jpg', orientation: 2 }
   ];
+
+  constructor() {}
 
   getColumnOrientationLength(col: Picture[]): number {
     let length = 0;
@@ -72,6 +72,11 @@ export class PortfolioComponent implements OnInit {
   }
 
   splitPicsArray() {
+    if (this.master.length < 3) {
+      console.log('ERROR: master list must have at least [3] photos');
+      return;
+    }
+
     this.col1.push(this.master.pop());
     this.col2.push(this.master.pop());
     this.col3.push(this.master.pop());
@@ -88,6 +93,51 @@ export class PortfolioComponent implements OnInit {
   }
 
   checkForUnevenColumns() {
+    const {
+      col1Length,
+      col2Length,
+      col3Length
+    } = this.getAllColumnOrientationLengths();
+
+    // console.log(
+    //   `col1: ${col1Length}\ncol2: ${col2Length}\ncol3: ${col3Length}\n`
+    // );
+    // console.log(`col1 last: ${this.col1[this.col1.length - 1].orientation}`);
+    // console.log(`col2 last: ${this.col2[this.col2.length - 1].orientation}`);
+    // console.log(`col3 last: ${this.col3[this.col3.length - 1].orientation}`);
+    const colLengths = [col1Length, col2Length, col3Length];
+    // console.log('shortest column value:', Math.min(...nums));
+    // console.log(
+    //   'number of short columns:',
+    //   nums.filter(x => {
+    //     return x === Math.min(...nums);
+    //   }).length
+    // );
+
+    const numShortCols = colLengths.filter(x => {
+      return x === Math.min(...colLengths);
+    }).length;
+
+    switch (numShortCols) {
+      case 1:
+        this.makeCenterColumnShortest(colLengths);
+        if (
+          this.isCol2Shortest() &&
+          this.col2[this.col2.length - 1].orientation === 1
+        ) {
+          this.col2.push(this.getLongestColumn().pop());
+        }
+        break;
+      case 2:
+        this.makeCenterColumnLongest(colLengths);
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  private getAllColumnOrientationLengths() {
     let col1Length = 0;
     let col2Length = 0;
     let col3Length = 0;
@@ -104,17 +154,46 @@ export class PortfolioComponent implements OnInit {
       col3Length += pic.orientation;
     });
 
-    console.log(
-      `col1: ${col1Length}\ncol2: ${col2Length}\ncol3: ${col3Length}\n`
-    );
-    console.log(`col1 last: ${this.col1[this.col1.length - 1].orientation}`);
-    console.log(`col2 last: ${this.col2[this.col2.length - 1].orientation}`);
-    console.log(`col3 last: ${this.col3[this.col3.length - 1].orientation}`);
-    const nums = [col1Length, col2Length, col3Length];
-    console.log(Math.min(...nums));
+    return { col1Length, col2Length, col3Length };
   }
 
-  constructor() {}
+  private makeCenterColumnShortest(colLengths: number[]) {
+    const shortestColIndex = colLengths.indexOf(Math.min(...colLengths));
+    const shortestCol = this.allCols[shortestColIndex];
+    if (shortestCol === this.col1) {
+      this.col1.push(this.col2.pop());
+    } else if (shortestCol === this.col3) {
+      this.col3.push(this.col2.pop());
+    }
+  }
+
+  private makeCenterColumnLongest(colLengths: number[]) {
+    const longestColIndex = colLengths.indexOf(Math.max(...colLengths));
+    const longestCol = this.allCols[longestColIndex];
+    if (longestCol !== this.col2) {
+      this.col2.push(longestCol.pop());
+    }
+  }
+
+  private getLongestColumn(): Picture[] {
+    if (
+      this.getColumnOrientationLength(this.col1) >
+        this.getColumnOrientationLength(this.col2) &&
+      this.getColumnOrientationLength(this.col1) >
+        this.getColumnOrientationLength(this.col3)
+    ) {
+      return this.col1;
+    } else if (
+      this.getColumnOrientationLength(this.col2) >
+        this.getColumnOrientationLength(this.col1) &&
+      this.getColumnOrientationLength(this.col2) >
+        this.getColumnOrientationLength(this.col3)
+    ) {
+      return this.col2;
+    }
+
+    return this.col3;
+  }
 
   ngOnInit() {
     this.splitPicsArray();
