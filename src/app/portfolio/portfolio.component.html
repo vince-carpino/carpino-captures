@@ -2,14 +2,16 @@
   {{ pageTitle }}
 </h1>
 
-<div class="row">
-  <div class="column">
-    <img *ngFor="let pic of col1" [src]="pic.url" />
-  </div>
-  <div class="column">
-    <img *ngFor="let pic of col2" [src]="pic.url" />
-  </div>
-  <div class="column">
-    <img *ngFor="let pic of col3" [src]="pic.url" />
+<div id="container">
+  <div class="row">
+    <div class="column">
+      <img *ngFor="let pic of col1" [src]="pic.url" />
+    </div>
+    <div class="column">
+      <img *ngFor="let pic of col2" [src]="pic.url" />
+    </div>
+    <div class="column">
+      <img *ngFor="let pic of col3" [src]="pic.url" />
+    </div>
   </div>
 </div>
