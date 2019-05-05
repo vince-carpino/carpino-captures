@@ -15,21 +15,21 @@ export class PortfolioComponent implements OnInit {
   allCols: Picture[][] = [this.col1, this.col2, this.col3];
 
   master: Picture[] = [
-    { url: '/src/assets/photos/01.jpg', orientation: 1 },
-    { url: '/src/assets/photos/02.jpg', orientation: 1 },
-    { url: '/src/assets/photos/03.jpg', orientation: 1 },
-    { url: '/src/assets/photos/04.jpg', orientation: 2 },
-    { url: '/src/assets/photos/05.jpg', orientation: 1 },
-    { url: '/src/assets/photos/06.jpg', orientation: 2 },
-    { url: '/src/assets/photos/07.jpg', orientation: 2 },
-    { url: '/src/assets/photos/08.jpg', orientation: 1 },
-    { url: '/src/assets/photos/09.jpg', orientation: 2 },
-    { url: '/src/assets/photos/10.jpg', orientation: 2 },
-    { url: '/src/assets/photos/11.jpg', orientation: 1 },
-    { url: '/src/assets/photos/12.jpg', orientation: 1 },
-    { url: '/src/assets/photos/13.jpg', orientation: 2 },
-    { url: '/src/assets/photos/14.jpg', orientation: 1 },
-    { url: '/src/assets/photos/15.jpg', orientation: 2 }
+    { url: '/src/assets/photos/01.jpg', orientation: 1, favorite: true },
+    { url: '/src/assets/photos/02.jpg', orientation: 1, favorite: true },
+    { url: '/src/assets/photos/03.jpg', orientation: 1, favorite: true },
+    { url: '/src/assets/photos/04.jpg', orientation: 2, favorite: true },
+    { url: '/src/assets/photos/05.jpg', orientation: 1, favorite: true },
+    { url: '/src/assets/photos/06.jpg', orientation: 2, favorite: true },
+    { url: '/src/assets/photos/07.jpg', orientation: 2, favorite: false },
+    { url: '/src/assets/photos/08.jpg', orientation: 1, favorite: false },
+    { url: '/src/assets/photos/09.jpg', orientation: 2, favorite: true },
+    { url: '/src/assets/photos/10.jpg', orientation: 2, favorite: true },
+    { url: '/src/assets/photos/11.jpg', orientation: 1, favorite: true },
+    { url: '/src/assets/photos/12.jpg', orientation: 1, favorite: true },
+    { url: '/src/assets/photos/13.jpg', orientation: 2, favorite: false },
+    { url: '/src/assets/photos/14.jpg', orientation: 1, favorite: true },
+    { url: '/src/assets/photos/15.jpg', orientation: 2, favorite: false }
   ];
 
   constructor() {}
@@ -77,19 +77,48 @@ export class PortfolioComponent implements OnInit {
       return;
     }
 
-    this.col1.push(this.master.pop());
-    this.col2.push(this.master.pop());
-    this.col3.push(this.master.pop());
 
-    while (this.master.length) {
+    const favorites = this.master.filter(pic => {
+      return pic.favorite;
+    });
+
+    const nonFavorites = this.master.filter(pic => {
+      return !pic.favorite;
+    });
+
+    favorites.forEach(pic => {
       if (this.isCol1Shortest()) {
-        this.col1.push(this.master.pop());
+        this.col1.push(pic);
       } else if (this.isCol2Shortest()) {
-        this.col2.push(this.master.pop());
+        this.col2.push(pic);
       } else if (this.isCol3Shortest()) {
-        this.col3.push(this.master.pop());
+        this.col3.push(pic);
       }
-    }
+    });
+
+    nonFavorites.forEach(pic => {
+      if (this.isCol1Shortest()) {
+        this.col1.push(pic);
+      } else if (this.isCol2Shortest()) {
+        this.col2.push(pic);
+      } else if (this.isCol3Shortest()) {
+        this.col3.push(pic);
+      }
+    });
+
+    // this.col1.push(this.master.pop());
+    // this.col2.push(this.master.pop());
+    // this.col3.push(this.master.pop());
+
+    // while (this.master.length) {
+    //   if (this.isCol1Shortest()) {
+    //     this.col1.push(this.master.pop());
+    //   } else if (this.isCol2Shortest()) {
+    //     this.col2.push(this.master.pop());
+    //   } else if (this.isCol3Shortest()) {
+    //     this.col3.push(this.master.pop());
+    //   }
+    // }
   }
 
   checkForUnevenColumns() {
