@@ -2,7 +2,7 @@
 @import './app/styles/vars';
 
 * {
-  font-family: 'Dosis', 'Baloo', 'Righteous', 'Helvetica Neue', sans-serif;
+  font-family: 'Quicksand', 'Varela Round', 'Comfortaa', 'Ubuntu', 'Dosis', 'Baloo', 'Righteous', 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
 
 .page-title {
   text-align: center;
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-weight: bold;
   color: black;
 }
