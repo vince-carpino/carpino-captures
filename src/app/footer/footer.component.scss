@@ -1,0 +1,21 @@
+@import '../styles/vars';
+
+span {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  background-color: $fui-midnightsky;
+  color: $fui-clouds;
+}
+
+footer {
+  align-self: flex-end;
+}
+
+a {
+  color: $fui-clouds;
+
+  :hover {
+    color: $fui-silver;
+  }
+}
