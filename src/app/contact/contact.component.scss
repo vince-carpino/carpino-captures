@@ -1,0 +1,22 @@
+@import '../styles/vars';
+
+.form-container {
+  display: inline-grid;
+  border: 3px solid black;
+  margin: 2rem;
+  margin-right: 0;
+  width: 35vw;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+#submit {
+  font-size: 15px;
+  height: 3rem;
+  color: $fui-clouds;
+  background-color: $fui-midnightsky;
+
+  &:disabled {
+    background-color: $fui-concrete;
+  }
+}
