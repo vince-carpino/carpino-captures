@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   siteName = 'Carpino Captures';
-  linkNames = ['Home', 'Instagram', 'About Me', 'Contact'];
+  linkNames = ['Home', 'Instagram', 'About', 'Contact'];
   instagramUrl = 'https://www.instagram.com/vince_carpino/';
 
   constructor() {}
