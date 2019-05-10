@@ -5,11 +5,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
+import { CrystalGalleryModule } from 'ngx-crystal-gallery';
+
 import {
   MatButtonModule,
   MatCardModule,
   MatIconModule,
-  MatToolbarModule
+  MatFormFieldModule,
+  MatToolbarModule,
+  MatInputModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -17,6 +21,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,11 +35,16 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CrystalGalleryModule,
+    FormsModule,
     HttpClientModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
     MatToolbarModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },

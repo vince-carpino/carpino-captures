@@ -20,7 +20,7 @@ export class AppComponent {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
   ) {
-    this.iconsToRegister.forEach((icon) => {
+    this.iconsToRegister.forEach(icon => {
       this.registerSvgIcon(icon);
     });
   }

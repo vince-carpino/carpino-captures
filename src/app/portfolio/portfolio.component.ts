@@ -14,22 +14,40 @@ export class PortfolioComponent implements OnInit {
 
   allCols: Picture[][] = [this.col1, this.col2, this.col3];
 
+  private imageUrls: string[] = [
+    '/src/assets/photos/01.jpg',
+    '/src/assets/photos/02.jpg',
+    '/src/assets/photos/03.jpg',
+    '/src/assets/photos/04.jpg',
+    '/src/assets/photos/05.jpg',
+    '/src/assets/photos/06.jpg',
+    '/src/assets/photos/07.jpg',
+    '/src/assets/photos/08.jpg',
+    '/src/assets/photos/09.jpg',
+    '/src/assets/photos/10.jpg',
+    '/src/assets/photos/11.jpg',
+    '/src/assets/photos/12.jpg',
+    '/src/assets/photos/13.jpg',
+    '/src/assets/photos/14.jpg',
+    '/src/assets/photos/15.jpg'
+  ];
+
   master: Picture[] = [
-    { url: '/src/assets/photos/01.jpg', orientation: 1, favorite: true },
-    { url: '/src/assets/photos/02.jpg', orientation: 1, favorite: true },
-    { url: '/src/assets/photos/03.jpg', orientation: 1, favorite: true },
-    { url: '/src/assets/photos/04.jpg', orientation: 2, favorite: true },
-    { url: '/src/assets/photos/05.jpg', orientation: 1, favorite: true },
-    { url: '/src/assets/photos/06.jpg', orientation: 2, favorite: true },
-    { url: '/src/assets/photos/07.jpg', orientation: 2, favorite: false },
-    { url: '/src/assets/photos/08.jpg', orientation: 1, favorite: false },
-    { url: '/src/assets/photos/09.jpg', orientation: 2, favorite: true },
-    { url: '/src/assets/photos/10.jpg', orientation: 2, favorite: true },
-    { url: '/src/assets/photos/11.jpg', orientation: 1, favorite: true },
-    { url: '/src/assets/photos/12.jpg', orientation: 1, favorite: true },
-    { url: '/src/assets/photos/13.jpg', orientation: 2, favorite: false },
-    { url: '/src/assets/photos/14.jpg', orientation: 1, favorite: true },
-    { url: '/src/assets/photos/15.jpg', orientation: 2, favorite: false }
+    { url: this.imageUrls[0], orientation: 1, favorite: true },
+    { url: this.imageUrls[1], orientation: 1, favorite: true },
+    { url: this.imageUrls[2], orientation: 1, favorite: true },
+    { url: this.imageUrls[3], orientation: 2, favorite: true },
+    { url: this.imageUrls[4], orientation: 1, favorite: true },
+    { url: this.imageUrls[5], orientation: 2, favorite: true },
+    { url: this.imageUrls[6], orientation: 2, favorite: false },
+    { url: this.imageUrls[7], orientation: 1, favorite: false },
+    { url: this.imageUrls[8], orientation: 2, favorite: true },
+    { url: this.imageUrls[9], orientation: 2, favorite: true },
+    { url: this.imageUrls[10], orientation: 1, favorite: true },
+    { url: this.imageUrls[11], orientation: 1, favorite: true },
+    { url: this.imageUrls[12], orientation: 2, favorite: false },
+    { url: this.imageUrls[13], orientation: 1, favorite: true },
+    { url: this.imageUrls[14], orientation: 2, favorite: false }
   ];
 
   constructor() {}
@@ -77,7 +95,6 @@ export class PortfolioComponent implements OnInit {
       return;
     }
 
-
     const favorites = this.master.filter(pic => {
       return pic.favorite;
     });
@@ -86,25 +103,9 @@ export class PortfolioComponent implements OnInit {
       return !pic.favorite;
     });
 
-    favorites.forEach(pic => {
-      if (this.isCol1Shortest()) {
-        this.col1.push(pic);
-      } else if (this.isCol2Shortest()) {
-        this.col2.push(pic);
-      } else if (this.isCol3Shortest()) {
-        this.col3.push(pic);
-      }
-    });
+    this.distributeFavorites(favorites);
 
-    nonFavorites.forEach(pic => {
-      if (this.isCol1Shortest()) {
-        this.col1.push(pic);
-      } else if (this.isCol2Shortest()) {
-        this.col2.push(pic);
-      } else if (this.isCol3Shortest()) {
-        this.col3.push(pic);
-      }
-    });
+    this.distributeNonFavorites(nonFavorites);
 
     // this.col1.push(this.master.pop());
     // this.col2.push(this.master.pop());
@@ -119,6 +120,30 @@ export class PortfolioComponent implements OnInit {
     //     this.col3.push(this.master.pop());
     //   }
     // }
+  }
+
+  private distributeNonFavorites(nonFavorites: Picture[]) {
+    nonFavorites.forEach(pic => {
+      if (this.isCol1Shortest()) {
+        this.col1.push(pic);
+      } else if (this.isCol2Shortest()) {
+        this.col2.push(pic);
+      } else if (this.isCol3Shortest()) {
+        this.col3.push(pic);
+      }
+    });
+  }
+
+  private distributeFavorites(favorites: Picture[]) {
+    favorites.forEach(pic => {
+      if (this.isCol1Shortest()) {
+        this.col1.push(pic);
+      } else if (this.isCol2Shortest()) {
+        this.col2.push(pic);
+      } else if (this.isCol3Shortest()) {
+        this.col3.push(pic);
+      }
+    });
   }
 
   checkForUnevenColumns() {
@@ -226,6 +251,11 @@ export class PortfolioComponent implements OnInit {
 
   ngOnInit() {
     this.splitPicsArray();
+
+    const image = new Image();
+    image.src = this.imageUrls[1];
+    console.log(`WIDTH: ${image.naturalWidth}\nHEIGHT: ${image.naturalHeight}`);
+
 
     this.checkForUnevenColumns();
   }
