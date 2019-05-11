@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, HostListener } from '@angular/core';
+import {
+  FormControl,
+  Validators,
+  FormGroup,
+  FormBuilder
+} from '@angular/forms';
+import { ConnectionService } from '../services/connection.service';
 
 @Component({
   templateUrl: './contact.component.html',
@@ -8,6 +14,9 @@ import { FormControl, Validators } from '@angular/forms';
 export class ContactComponent implements OnInit {
   pageTitle = 'Contact';
 
+  contactForm: FormGroup;
+  disableSubmitButton = true;
+
   name = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
   message = new FormControl('', [Validators.required]);
@@ -15,6 +24,12 @@ export class ContactComponent implements OnInit {
   nameString = '';
   emailString = '';
   messageString = '';
+
+  @HostListener('input') oninput() {
+    if (this.contactForm.valid) {
+      this.disableSubmitButton = false;
+    }
+  }
 
   getErrorMessage(field: string) {
     switch (field) {
@@ -33,16 +48,15 @@ export class ContactComponent implements OnInit {
     }
   }
 
-  /**
-   * Process the form we have. Send to whatever backend
-   * Only alerting for now
-   */
   processForm() {
-    const allInfo = `My name is ${this.nameString}. My email is ${
-      this.emailString
-    }. My message is ${this.messageString}`;
-
-    alert(allInfo);
+    this.connectionService.sendMessage(this.contactForm.value).subscribe(() => {
+      alert('Your message has been sent.');
+      this.contactForm.reset();
+      this.disableSubmitButton = true;
+    },
+    error => {
+      console.log('ERROR:', error);
+    });
   }
 
   anyErrors(): boolean {
@@ -54,7 +68,16 @@ export class ContactComponent implements OnInit {
     );
   }
 
-  constructor() {}
+  constructor(
+    private fb: FormBuilder,
+    private connectionService: ConnectionService
+  ) {
+    this.contactForm = fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      message: ['', Validators.required]
+    });
+  }
 
   ngOnInit() {}
 }

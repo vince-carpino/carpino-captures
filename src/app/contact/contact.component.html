@@ -2,76 +2,61 @@
   {{ pageTitle }}
 </h1>
 
-<!-- <form>
-  <div class="field">
-    <input type="text" name="name" class="input" placeholder="Michael Scott" />
+<!-- <mat-card> -->
+  <!-- <mat-card-title>Let's shoot</mat-card-title> -->
+  <div class="form-container" [formGroup]="contactForm">
+    <mat-form-field [hideRequiredMarker]="true" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        placeholder="Michael Scott"
+        formControlName="name"
+        required
+        [(ngModel)]="nameString"
+      />
+      <mat-error *ngIf="name.invalid">
+        {{ getErrorMessage('name') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field [hideRequiredMarker]="true" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        placeholder="m.scott@dundermifflin.com"
+        formControlName="email"
+        [formControl]="email"
+        required
+        [(ngModel)]="emailString"
+      />
+      <mat-error *ngIf="email.invalid">
+        {{ getErrorMessage('email') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field [hideRequiredMarker]="true" appearance="outline">
+      <mat-label>Message</mat-label>
+      <textarea
+        matInput
+        placeholder="That's what she said"
+        formControlName="message"
+        [formControl]="message"
+        required
+        rows="6"
+        [(ngModel)]="messageString"
+      ></textarea>
+      <mat-error *ngIf="message.invalid">
+        {{ getErrorMessage('message') }}
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-button
+      (click)="processForm()"
+      [disabled]="disableSubmitButton"
+      id="submit"
+    >
+      Submit
+    </button>
   </div>
-
-  <div class="field">
-    <input
-      type="email"
-      name="email"
-      class="input"
-      placeholder="m.scott@dundermifflin.com"
-    />
-  </div>
-
-  <div class="field">
-    <textarea
-      class="textarea"
-      name="message"
-      placeholder="Write something..."
-    ></textarea>
-  </div>
-
-  <button matButton type="submit">Submit</button>
-</form> -->
-
-<div class="form-container">
-  <mat-form-field [hideRequiredMarker]="true" appearance="outline">
-    <mat-label>Name</mat-label>
-    <input
-      matInput
-      placeholder="Michael Scott"
-      [formControl]="name"
-      required
-      [(ngModel)]="nameString"
-    />
-    <mat-error *ngIf="name.invalid">
-      {{ getErrorMessage('name') }}
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field [hideRequiredMarker]="true" appearance="outline">
-    <mat-label>Email</mat-label>
-    <input
-      matInput
-      placeholder="m.scott@dundermifflin.com"
-      [formControl]="email"
-      required
-      [(ngModel)]="emailString"
-    />
-    <mat-error *ngIf="email.invalid">
-      {{ getErrorMessage('email') }}
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field [hideRequiredMarker]="true" appearance="outline">
-    <mat-label>Message</mat-label>
-    <textarea
-      matInput
-      placeholder="That's what she said"
-      [formControl]="message"
-      required
-      rows="6"
-      [(ngModel)]="messageString"
-    ></textarea>
-    <mat-error *ngIf="message.invalid">
-      {{ getErrorMessage('message') }}
-    </mat-error>
-  </mat-form-field>
-
-  <button mat-button (click)="processForm()" [disabled]="anyErrors()" id="submit">
-    Submit
-  </button>
-</div>
+<!-- </mat-card> -->
