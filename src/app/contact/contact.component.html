@@ -12,7 +12,6 @@
         placeholder="Michael Scott"
         formControlName="name"
         required
-        [(ngModel)]="nameString"
       />
       <mat-error *ngIf="name.invalid">
         {{ getErrorMessage('name') }}
@@ -25,9 +24,7 @@
         matInput
         placeholder="m.scott@dundermifflin.com"
         formControlName="email"
-        [formControl]="email"
         required
-        [(ngModel)]="emailString"
       />
       <mat-error *ngIf="email.invalid">
         {{ getErrorMessage('email') }}
@@ -40,10 +37,8 @@
         matInput
         placeholder="That's what she said"
         formControlName="message"
-        [formControl]="message"
         required
         rows="6"
-        [(ngModel)]="messageString"
       ></textarea>
       <mat-error *ngIf="message.invalid">
         {{ getErrorMessage('message') }}

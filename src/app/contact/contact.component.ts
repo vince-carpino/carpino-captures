@@ -21,14 +21,8 @@ export class ContactComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   message = new FormControl('', [Validators.required]);
 
-  nameString = '';
-  emailString = '';
-  messageString = '';
-
-  @HostListener('input') oninput() {
-    if (this.contactForm.valid) {
-      this.disableSubmitButton = false;
-    }
+  @HostListener('input') onInput() {
+    this.disableSubmitButton = !this.contactForm.valid;
   }
 
   getErrorMessage(field: string) {
@@ -49,22 +43,15 @@ export class ContactComponent implements OnInit {
   }
 
   processForm() {
-    this.connectionService.sendMessage(this.contactForm.value).subscribe(() => {
-      alert('Your message has been sent.');
-      this.contactForm.reset();
-      this.disableSubmitButton = true;
-    },
-    error => {
-      console.log('ERROR:', error);
-    });
-  }
-
-  anyErrors(): boolean {
-    return (
-      this.name.hasError('required') ||
-      this.email.hasError('required') ||
-      this.email.hasError('email') ||
-      this.message.hasError('required')
+    this.connectionService.sendMessage(this.contactForm.value).subscribe(
+      () => {
+        alert('Your message has been sent.');
+        this.contactForm.reset();
+        this.disableSubmitButton = true;
+      },
+      error => {
+        console.log('ERROR:', error);
+      }
     );
   }
 
@@ -73,9 +60,9 @@ export class ContactComponent implements OnInit {
     private connectionService: ConnectionService
   ) {
     this.contactForm = fb.group({
-      name: ['', Validators.required],
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      message: ['', Validators.required]
+      name: this.name,
+      email: this.email,
+      message: this.message
     });
   }
 
