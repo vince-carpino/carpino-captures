@@ -43,6 +43,8 @@ export class ContactComponent implements OnInit {
   }
 
   processForm() {
+    this.disableSubmitButton = true;
+
     this.connectionService.sendMessage(this.contactForm.value).subscribe(
       () => {
         alert('Your message has been sent.');

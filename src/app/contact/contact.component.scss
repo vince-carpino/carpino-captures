@@ -1,5 +1,23 @@
 @import '../styles/vars';
 
+.mat-card {
+  display: inline-grid;
+  margin: 2rem;
+  margin-right: 0;
+  width: 35vw;
+  // background-color: $fui-belizehole;
+  // background-color: rgba($color: $fui-belizehole, $alpha: 0.5);
+
+  * {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+.mat-card-title {
+  font-weight: bold;
+}
+
 .form-container {
   display: inline-grid;
   border: 3px solid black;
@@ -18,5 +36,9 @@
 
   &:disabled {
     background-color: $fui-concrete;
+
+    &:hover {
+      cursor: not-allowed;
+    }
   }
 }

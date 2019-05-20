@@ -2,9 +2,9 @@
   {{ pageTitle }}
 </h1>
 
-<!-- <mat-card> -->
-  <!-- <mat-card-title>Let's shoot</mat-card-title> -->
-  <div class="form-container" [formGroup]="contactForm">
+<mat-card [formGroup]="contactForm">
+  <mat-card-title>Send me an email</mat-card-title>
+  <mat-card-content>
     <mat-form-field [hideRequiredMarker]="true" appearance="outline">
       <mat-label>Name</mat-label>
       <input
@@ -17,7 +17,9 @@
         {{ getErrorMessage('name') }}
       </mat-error>
     </mat-form-field>
+  </mat-card-content>
 
+  <mat-card-content>
     <mat-form-field [hideRequiredMarker]="true" appearance="outline">
       <mat-label>Email</mat-label>
       <input
@@ -30,7 +32,9 @@
         {{ getErrorMessage('email') }}
       </mat-error>
     </mat-form-field>
+  </mat-card-content>
 
+  <mat-card-content>
     <mat-form-field [hideRequiredMarker]="true" appearance="outline">
       <mat-label>Message</mat-label>
       <textarea
@@ -44,14 +48,14 @@
         {{ getErrorMessage('message') }}
       </mat-error>
     </mat-form-field>
+  </mat-card-content>
 
-    <button
-      mat-button
-      (click)="processForm()"
-      [disabled]="disableSubmitButton"
-      id="submit"
-    >
-      Submit
-    </button>
-  </div>
-<!-- </mat-card> -->
+  <button
+    mat-button
+    (click)="processForm()"
+    [disabled]="disableSubmitButton"
+    id="submit"
+  >
+    Submit
+  </button>
+</mat-card>
