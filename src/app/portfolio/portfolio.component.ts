@@ -15,39 +15,58 @@ export class PortfolioComponent implements OnInit {
   allCols: Picture[][] = [this.col1, this.col2, this.col3];
 
   private imageUrls: string[] = [
-    '/src/assets/photos/01.jpg',
-    '/src/assets/photos/02.jpg',
-    '/src/assets/photos/03.jpg',
-    '/src/assets/photos/04.jpg',
-    '/src/assets/photos/05.jpg',
-    '/src/assets/photos/06.jpg',
-    '/src/assets/photos/07.jpg',
-    '/src/assets/photos/08.jpg',
-    '/src/assets/photos/09.jpg',
-    '/src/assets/photos/10.jpg',
-    '/src/assets/photos/11.jpg',
-    '/src/assets/photos/12.jpg',
-    '/src/assets/photos/13.jpg',
-    '/src/assets/photos/14.jpg',
-    '/src/assets/photos/15.jpg'
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/01.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/02.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/03.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/04.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/05.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/06.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/07.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/08.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/09.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/10.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/11.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/12.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/13.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/14.JPG',
+    // 'https://s3-us-west-1.amazonaws.com/carpino-captures/15.JPG',
+    'src/assets/photos/01_fav.JPG',
+    'src/assets/photos/02_fav.JPG',
+    'src/assets/photos/03_fav.JPG',
+    'src/assets/photos/04_fav.JPG',
+    'src/assets/photos/05_fav.JPG',
+    'src/assets/photos/06_fav.JPG',
+    'src/assets/photos/07.JPG',
+    'src/assets/photos/08.JPG',
+    'src/assets/photos/09_fav.JPG',
+    'src/assets/photos/10_fav.JPG',
+    'src/assets/photos/11_fav.JPG',
+    'src/assets/photos/12_fav.JPG',
+    'src/assets/photos/13.JPG',
+    'src/assets/photos/14.JPG',
+    'src/assets/photos/15_fav.JPG',
+    'src/assets/photos/16_fav.JPG',
+    'src/assets/photos/17_fav.JPG',
   ];
 
   master: Picture[] = [
-    { url: this.imageUrls[0], orientation: 1, favorite: true },
-    { url: this.imageUrls[1], orientation: 1, favorite: true },
-    { url: this.imageUrls[2], orientation: 1, favorite: true },
-    { url: this.imageUrls[3], orientation: 2, favorite: true },
-    { url: this.imageUrls[4], orientation: 1, favorite: true },
-    { url: this.imageUrls[5], orientation: 2, favorite: true },
-    { url: this.imageUrls[6], orientation: 2, favorite: false },
-    { url: this.imageUrls[7], orientation: 1, favorite: false },
-    { url: this.imageUrls[8], orientation: 2, favorite: true },
-    { url: this.imageUrls[9], orientation: 2, favorite: true },
-    { url: this.imageUrls[10], orientation: 1, favorite: true },
-    { url: this.imageUrls[11], orientation: 1, favorite: true },
-    { url: this.imageUrls[12], orientation: 2, favorite: false },
-    { url: this.imageUrls[13], orientation: 1, favorite: true },
-    { url: this.imageUrls[14], orientation: 2, favorite: false }
+    { url: this.imageUrls[0], orientation: 1 },
+    { url: this.imageUrls[1], orientation: 1 },
+    { url: this.imageUrls[2], orientation: 1 },
+    { url: this.imageUrls[3], orientation: 2 },
+    { url: this.imageUrls[4], orientation: 1 },
+    { url: this.imageUrls[5], orientation: 2 },
+    { url: this.imageUrls[6], orientation: 2 },
+    { url: this.imageUrls[7], orientation: 1 },
+    { url: this.imageUrls[8], orientation: 2 },
+    { url: this.imageUrls[9], orientation: 2 },
+    { url: this.imageUrls[10], orientation: 1 },
+    { url: this.imageUrls[11], orientation: 1 },
+    { url: this.imageUrls[12], orientation: 2 },
+    { url: this.imageUrls[13], orientation: 1 },
+    { url: this.imageUrls[14], orientation: 2 },
+    { url: this.imageUrls[15], orientation: 1 },
+    { url: this.imageUrls[16], orientation: 1 },
   ];
 
   constructor() {}
@@ -96,16 +115,16 @@ export class PortfolioComponent implements OnInit {
     }
 
     const favorites = this.master.filter(pic => {
-      return pic.favorite;
+      return pic.url.includes('fav');
     });
 
     const nonFavorites = this.master.filter(pic => {
-      return !pic.favorite;
+      return !pic.url.includes('fav');
     });
 
-    this.distributeFavorites(favorites);
+    this.distributeFavorites(favorites.reverse());
 
-    this.distributeNonFavorites(nonFavorites);
+    this.distributeNonFavorites(nonFavorites.reverse());
 
     // this.col1.push(this.master.pop());
     // this.col2.push(this.master.pop());
@@ -255,7 +274,6 @@ export class PortfolioComponent implements OnInit {
     const image = new Image();
     image.src = this.imageUrls[1];
     console.log(`WIDTH: ${image.naturalWidth}\nHEIGHT: ${image.naturalHeight}`);
-
 
     this.checkForUnevenColumns();
   }
