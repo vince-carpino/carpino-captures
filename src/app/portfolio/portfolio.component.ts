@@ -36,38 +36,20 @@ export class PortfolioComponent implements OnInit {
     'src/assets/photos/04_fav.JPG',
     'src/assets/photos/05_fav.JPG',
     'src/assets/photos/06_fav.JPG',
-    'src/assets/photos/07.JPG',
-    'src/assets/photos/08.JPG',
+    'src/assets/photos/07_non.JPG',
+    'src/assets/photos/08_non.JPG',
     'src/assets/photos/09_fav.JPG',
     'src/assets/photos/10_fav.JPG',
     'src/assets/photos/11_fav.JPG',
     'src/assets/photos/12_fav.JPG',
-    'src/assets/photos/13.JPG',
-    'src/assets/photos/14.JPG',
+    'src/assets/photos/13_non.JPG',
+    'src/assets/photos/14_non.JPG',
     'src/assets/photos/15_fav.JPG',
     'src/assets/photos/16_fav.JPG',
-    'src/assets/photos/17_fav.JPG',
+    'src/assets/photos/17_fav.JPG'
   ];
 
-  master: Picture[] = [
-    { url: this.imageUrls[0], orientation: 1 },
-    { url: this.imageUrls[1], orientation: 1 },
-    { url: this.imageUrls[2], orientation: 1 },
-    { url: this.imageUrls[3], orientation: 2 },
-    { url: this.imageUrls[4], orientation: 1 },
-    { url: this.imageUrls[5], orientation: 2 },
-    { url: this.imageUrls[6], orientation: 2 },
-    { url: this.imageUrls[7], orientation: 1 },
-    { url: this.imageUrls[8], orientation: 2 },
-    { url: this.imageUrls[9], orientation: 2 },
-    { url: this.imageUrls[10], orientation: 1 },
-    { url: this.imageUrls[11], orientation: 1 },
-    { url: this.imageUrls[12], orientation: 2 },
-    { url: this.imageUrls[13], orientation: 1 },
-    { url: this.imageUrls[14], orientation: 2 },
-    { url: this.imageUrls[15], orientation: 1 },
-    { url: this.imageUrls[16], orientation: 1 },
-  ];
+  master: Picture[] = [];
 
   constructor() {}
 
@@ -114,7 +96,7 @@ export class PortfolioComponent implements OnInit {
       return;
     }
 
-    const favorites = this.master.filter(pic => {
+    const favorites = this.master.reverse().filter(pic => {
       return pic.url.includes('fav');
     });
 
@@ -122,9 +104,9 @@ export class PortfolioComponent implements OnInit {
       return !pic.url.includes('fav');
     });
 
-    this.distributeFavorites(favorites.reverse());
+    this.distributeFavorites(favorites);
 
-    this.distributeNonFavorites(nonFavorites.reverse());
+    this.distributeNonFavorites(nonFavorites);
 
     // this.col1.push(this.master.pop());
     // this.col2.push(this.master.pop());
@@ -268,12 +250,20 @@ export class PortfolioComponent implements OnInit {
     return this.col3;
   }
 
-  ngOnInit() {
-    this.splitPicsArray();
+  populateMasterImageList() {
+    this.imageUrls.forEach(url => {
+      const pic: Picture = { url: '', orientation: 0 };
+      const image = new Image();
+      pic.url = url;
+      image.src = url;
+      pic.orientation = image.naturalWidth > image.naturalHeight ? 1 : 2;
+      this.master.push(pic);
+    });
+  }
 
-    const image = new Image();
-    image.src = this.imageUrls[1];
-    console.log(`WIDTH: ${image.naturalWidth}\nHEIGHT: ${image.naturalHeight}`);
+  ngOnInit() {
+    this.populateMasterImageList();
+    this.splitPicsArray();
 
     this.checkForUnevenColumns();
   }
