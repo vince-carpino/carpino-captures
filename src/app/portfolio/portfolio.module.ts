@@ -1,10 +1,8 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
-import { MasonryLayoutModule } from 'ngx-masonry-layout';
-import { CrystalGalleryModule } from 'ngx-crystal-gallery';
+import { NgModule } from '@angular/core';
 
 @NgModule({
-  imports: [CrystalGalleryModule, MasonryLayoutModule],
+  imports: [],
   declarations: [],
-  schemas: [NO_ERRORS_SCHEMA]
+  schemas: []
 })
 export class PortfolioModule {}
