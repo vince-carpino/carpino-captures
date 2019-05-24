@@ -5,8 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { CrystalGalleryModule } from 'ngx-crystal-gallery';
-
 import {
   MatButtonModule,
   MatCardModule,
@@ -35,7 +33,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CrystalGalleryModule,
     FormsModule,
     HttpClientModule,
     MatButtonModule,

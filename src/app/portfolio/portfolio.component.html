@@ -2,7 +2,7 @@
   {{ pageTitle }}
 </h1>
 
-<div id="container">
+<!-- <div class="container">
   <div class="row">
     <div class="column">
       <img *ngFor="let pic of col1" [src]="pic.url" />
@@ -14,4 +14,10 @@
       <img *ngFor="let pic of col3" [src]="pic.url" />
     </div>
   </div>
+</div> -->
+
+<div class="grid-container">
+  <span>
+    <img *ngFor="let pic of imageUrls" src="{{ pic }}"/>
+  </span>
 </div>

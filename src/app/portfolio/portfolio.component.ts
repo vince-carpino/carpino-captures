@@ -14,7 +14,7 @@ export class PortfolioComponent implements OnInit {
 
   allCols: Picture[][] = [this.col1, this.col2, this.col3];
 
-  private imageUrls: string[] = [
+  imageUrls: string[] = [
     // 'https://s3-us-west-1.amazonaws.com/carpino-captures/01.JPG',
     // 'https://s3-us-west-1.amazonaws.com/carpino-captures/02.JPG',
     // 'https://s3-us-west-1.amazonaws.com/carpino-captures/03.JPG',
@@ -101,7 +101,7 @@ export class PortfolioComponent implements OnInit {
     });
 
     const nonFavorites = this.master.filter(pic => {
-      return !pic.url.includes('fav');
+      return pic.url.includes('non');
     });
 
     this.distributeFavorites(favorites);
