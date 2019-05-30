@@ -1,7 +1,15 @@
 img {
   max-height: 450px;
   max-width: 90vw;
+  height: auto;
   object-fit: contain;
+  margin: 5px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 }
 
 span {
@@ -12,10 +20,6 @@ span {
   flex-flow: row wrap;
   padding: 5px;
   height: 100%;
-}
-
-span > img {
-  margin: 5px;
 }
 
 .container {
