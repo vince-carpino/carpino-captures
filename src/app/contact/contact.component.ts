@@ -5,7 +5,7 @@ import {
   FormGroup,
   FormBuilder
 } from '@angular/forms';
-import { ConnectionService } from '../services/connection.service';
+import { ContactFormEmailService } from '../services/contact-form-email.service';
 
 @Component({
   templateUrl: './contact.component.html',
@@ -45,7 +45,7 @@ export class ContactComponent implements OnInit {
   processForm() {
     this.disableSubmitButton = true;
 
-    this.connectionService.sendMessage(this.contactForm.value).subscribe(
+    this.emailService.sendMessage(this.contactForm.value).subscribe(
       () => {
         alert('Your message has been sent.');
         this.contactForm.reset();
@@ -59,9 +59,9 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private connectionService: ConnectionService
+    private emailService: ContactFormEmailService
   ) {
-    this.contactForm = fb.group({
+    this.contactForm = this.fb.group({
       name: this.name,
       email: this.email,
       message: this.message

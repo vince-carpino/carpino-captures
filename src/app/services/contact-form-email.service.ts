@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ConnectionService {
+export class ContactFormEmailService {
   url = 'http://localhost:3000/send';
 
   constructor(private http: HttpClient) {}
