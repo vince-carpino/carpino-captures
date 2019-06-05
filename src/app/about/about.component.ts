@@ -8,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class AboutComponent implements OnInit {
   pageTitle = 'About Me';
 
+  imageUrlPrefix = 'https://s3-us-west-1.amazonaws.com/carpino-captures/';
+
+  getBioImageUrl() {
+    return this.imageUrlPrefix + 'me.JPG';
+  }
+
   constructor() {}
 
   ngOnInit() {}
