@@ -6,10 +6,23 @@ import {
   FormBuilder
 } from '@angular/forms';
 import { ContactFormEmailService } from '../services/contact-form-email.service';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate
+} from '@angular/animations';
 
 @Component({
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      state('in', style({ opacity: 1 })),
+      transition(':enter', [style({ opacity: 0 }), animate(400)])
+    ])
+  ]
 })
 export class ContactComponent implements OnInit {
   pageTitle = 'Contact';

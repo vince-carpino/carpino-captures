@@ -1,8 +1,8 @@
-<h1 class="page-title">
+<h1 class="page-title" [@fadeIn]="'in'">
   {{ pageTitle }}
 </h1>
 
-<mat-card [formGroup]="contactForm">
+<mat-card [formGroup]="contactForm" [@fadeIn]="'in'">
   <mat-card-title>Send me an email</mat-card-title>
   <mat-card-content>
     <mat-form-field [hideRequiredMarker]="true" appearance="outline">
