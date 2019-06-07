@@ -4,6 +4,11 @@
 
 <div class="container">
   <span>
-    <img *ngFor="let pic of master" src="{{ pic.url }}" (click)="showFullSize(pic.url)" />
+    <img
+      *ngFor="let pic of master"
+      src="{{ pic.url }}"
+      [@fadeIn]="'in'"
+      (click)="showFullSize(pic.url)"
+    />
   </span>
 </div>
