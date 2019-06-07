@@ -1,21 +1,18 @@
 @import '../styles/vars';
 
-.two-columns {
-  display: flex;
-  & > * {
-    // border: 3px solid black;
-    width: 50%;
-    // margin: 3rem;
-  }
-
-  h3 {
-    // width: 50%;
-  }
+img {
+  max-width: 90vw;
+  max-height: 450px;
+  height: auto;
+  object-fit: contain;
 }
 
-h1 {
-  text-align: center;
-  // border: 3px solid black;
+span {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: space-evenly;
+  min-height: 75vh;
 }
 
 #bio {
@@ -25,25 +22,5 @@ h1 {
   margin: 2rem;
   padding: 2rem 4rem;
   background-color: $fui-clouds;
-  // width: 30%;
-}
-
-div.horizontal {
-  display: flex;
-  justify-content: center;
-}
-
-div.vertical {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#pic {
-  width: 50%;
-  margin: 2rem;
-
-  img {
-    width: 100%;
-  }
+  max-width: 35vw;
 }
