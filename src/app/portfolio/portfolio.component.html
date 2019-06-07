@@ -4,6 +4,6 @@
 
 <div class="container">
   <span>
-    <img *ngFor="let pic of master" src="{{ pic }}"/>
+    <img *ngFor="let pic of master" src="{{ pic.url }}" (click)="showFullSize(pic.url)" />
   </span>
 </div>
