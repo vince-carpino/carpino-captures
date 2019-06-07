@@ -13,6 +13,7 @@ import {
   transition,
   animate
 } from '@angular/animations';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   templateUrl: './contact.component.html',
@@ -20,7 +21,7 @@ import {
   animations: [
     trigger('fadeIn', [
       state('in', style({ opacity: 1 })),
-      transition(':enter', [style({ opacity: 0 }), animate(400)])
+      transition(':enter', [style({ opacity: 0 }), animate(600)])
     ])
   ]
 })
@@ -29,6 +30,10 @@ export class ContactComponent implements OnInit {
 
   contactForm: FormGroup;
   disableSubmitButton = true;
+  successMessage = 'Your message was sent';
+  successDelay = { duration: 3000 };
+  errorMessage = 'There was an error sending your message, please try again';
+  errorDelay = { duration: 5000 };
 
   name = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -55,23 +60,30 @@ export class ContactComponent implements OnInit {
     }
   }
 
+  openSnackbar(message: string, delay: {}) {
+    this.snackbar.open(message, '', delay);
+  }
+
   processForm() {
     this.disableSubmitButton = true;
+    this.contactForm.disable();
 
     this.emailService.sendMessage(this.contactForm.value).subscribe(
       () => {
-        alert('Your message has been sent.');
+        this.openSnackbar(this.successMessage, this.successDelay);
         this.contactForm.reset();
+        this.contactForm.enable();
         this.disableSubmitButton = true;
       },
       error => {
-        console.log('ERROR:', error);
+        this.openSnackbar(this.errorMessage, this.errorDelay);
       }
     );
   }
 
   constructor(
     private fb: FormBuilder,
+    private snackbar: MatSnackBar,
     private emailService: ContactFormEmailService
   ) {
     this.contactForm = this.fb.group({

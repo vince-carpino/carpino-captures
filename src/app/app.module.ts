@@ -11,7 +11,8 @@ import {
   MatIconModule,
   MatFormFieldModule,
   MatToolbarModule,
-  MatInputModule
+  MatInputModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -40,6 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     MatToolbarModule,
     ReactiveFormsModule,
     RouterModule.forRoot([

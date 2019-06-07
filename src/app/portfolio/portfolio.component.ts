@@ -39,11 +39,11 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   }
 
   showFullSize(url: string) {
-    const fullSizeUrl = this.getFullSizeUrl(url);
+    const fullSizeUrl = this.openFullSize(url);
     window.open(fullSizeUrl, '_blank');
   }
 
-  getFullSizeUrl(smallUrl: string): string {
+  openFullSize(smallUrl: string): string {
     return smallUrl.replace('small', 'full');
   }
 

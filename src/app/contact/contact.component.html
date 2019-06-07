@@ -2,60 +2,62 @@
   {{ pageTitle }}
 </h1>
 
-<mat-card [formGroup]="contactForm" [@fadeIn]="'in'">
-  <mat-card-title>Send me an email</mat-card-title>
-  <mat-card-content>
-    <mat-form-field [hideRequiredMarker]="true" appearance="outline">
-      <mat-label>Name</mat-label>
-      <input
-        matInput
-        placeholder="Michael Scott"
-        formControlName="name"
-        required
-      />
-      <mat-error *ngIf="name.invalid">
-        {{ getErrorMessage('name') }}
-      </mat-error>
-    </mat-form-field>
-  </mat-card-content>
+<div class="container">
+  <mat-card [formGroup]="contactForm" [@fadeIn]="'in'">
+    <mat-card-title>Send me an email</mat-card-title>
+    <mat-card-content>
+      <mat-form-field [hideRequiredMarker]="true" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Michael Scott"
+          formControlName="name"
+          required
+        />
+        <mat-error *ngIf="name.invalid">
+          {{ getErrorMessage('name') }}
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
 
-  <mat-card-content>
-    <mat-form-field [hideRequiredMarker]="true" appearance="outline">
-      <mat-label>Email</mat-label>
-      <input
-        matInput
-        placeholder="m.scott@dundermifflin.com"
-        formControlName="email"
-        required
-      />
-      <mat-error *ngIf="email.invalid">
-        {{ getErrorMessage('email') }}
-      </mat-error>
-    </mat-form-field>
-  </mat-card-content>
+    <mat-card-content>
+      <mat-form-field [hideRequiredMarker]="true" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="m.scott@dundermifflin.com"
+          formControlName="email"
+          required
+        />
+        <mat-error *ngIf="email.invalid">
+          {{ getErrorMessage('email') }}
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
 
-  <mat-card-content>
-    <mat-form-field [hideRequiredMarker]="true" appearance="outline">
-      <mat-label>Message</mat-label>
-      <textarea
-        matInput
-        placeholder="That's what she said"
-        formControlName="message"
-        required
-        rows="6"
-      ></textarea>
-      <mat-error *ngIf="message.invalid">
-        {{ getErrorMessage('message') }}
-      </mat-error>
-    </mat-form-field>
-  </mat-card-content>
+    <mat-card-content>
+      <mat-form-field [hideRequiredMarker]="true" appearance="outline">
+        <mat-label>Message</mat-label>
+        <textarea
+          matInput
+          placeholder="That's what she said"
+          formControlName="message"
+          required
+          rows="6"
+        ></textarea>
+        <mat-error *ngIf="message.invalid">
+          {{ getErrorMessage('message') }}
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
 
-  <button
-    mat-button
-    (click)="processForm()"
-    [disabled]="disableSubmitButton"
-    id="submit"
-  >
-    Submit
-  </button>
-</mat-card>
+    <button
+      mat-button
+      (click)="processForm()"
+      [disabled]="disableSubmitButton"
+      id="submit"
+    >
+      Submit
+    </button>
+  </mat-card>
+</div>
