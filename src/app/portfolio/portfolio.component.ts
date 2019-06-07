@@ -8,14 +8,10 @@ import { Picture } from '../picture/picture';
 })
 export class PortfolioComponent implements OnInit {
   pageTitle = 'Portfolio';
-
   errorMessage = '';
-
   master: Picture[] = [];
 
-  constructor(
-    private imageService: PortfolioImagesService
-  ) {}
+  constructor(private imageService: PortfolioImagesService) {}
 
   showFullSize(url: string) {
     const fullSizeUrl = this.getFullSizeUrl(url);
@@ -26,18 +22,20 @@ export class PortfolioComponent implements OnInit {
     return smallUrl.replace('small', 'full');
   }
 
+  compareFunc = (a: Picture, b: Picture) => {
+    if (a.fav && !b.fav) {
+      return -1;
+    }
+    if (!a.fav && b.fav) {
+      return 1;
+    }
+    return 0;
+  }
+
   getImagesFromS3() {
     this.imageService.getImagesFromManifest().subscribe(
       pics => {
-        pics = pics.reverse().sort((a, b) => {
-          if (a.fav && !b.fav) {
-            return -1;
-          }
-          if (!a.fav && b.fav) {
-            return 1;
-          }
-          return 0;
-        });
+        pics = pics.reverse().sort(this.compareFunc);
         this.master = pics;
       },
       error => (this.errorMessage = <any>error)
