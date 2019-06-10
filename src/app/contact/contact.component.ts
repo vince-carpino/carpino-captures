@@ -20,8 +20,8 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./contact.component.scss'],
   animations: [
     trigger('fadeIn', [
-      state('in', style({ opacity: 1 })),
-      transition(':enter', [style({ opacity: 0 }), animate(600)])
+      state('in', style({ opacity: 1, top: '0px' })),
+      transition(':enter', [style({ opacity: 0, top: '-10px' }), animate(600)])
     ])
   ]
 })
