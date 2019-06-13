@@ -8,7 +8,7 @@
       *ngFor="let pic of master"
       src="{{ pic.url }}"
       [@fadeIn]="'in'"
-      (click)="openFullSize(pic.url)"
+      (click)="showFullSize(pic.url)"
     />
   </span>
 </div>

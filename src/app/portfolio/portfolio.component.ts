@@ -27,11 +27,11 @@ export class PortfolioComponent implements OnInit {
   constructor(private imageService: PortfolioImagesService) {}
 
   showFullSize(url: string) {
-    const fullSizeUrl = this.openFullSize(url);
+    const fullSizeUrl = this.getFullSizeUrl(url);
     window.open(fullSizeUrl, '_blank');
   }
 
-  openFullSize(smallUrl: string): string {
+  getFullSizeUrl(smallUrl: string): string {
     return smallUrl.replace('small', 'full');
   }
 
