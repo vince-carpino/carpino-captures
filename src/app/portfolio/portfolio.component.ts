@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PortfolioImagesService } from '../services/portfolio-images.service';
 import { Picture } from '../picture/picture';
 import {
@@ -8,12 +8,6 @@ import {
   transition,
   animate
 } from '@angular/animations';
-import {
-  Router,
-  NavigationStart,
-  NavigationEnd,
-  NavigationCancel
-} from '@angular/router';
 
 @Component({
   templateUrl: './portfolio.component.html',
@@ -25,18 +19,12 @@ import {
     ])
   ]
 })
-export class PortfolioComponent implements OnInit, AfterViewInit {
+export class PortfolioComponent implements OnInit {
   pageTitle = 'Portfolio';
   errorMessage = '';
   master: Picture[] = [];
-  loading = true;
 
-  constructor(
-    private imageService: PortfolioImagesService,
-    private router: Router
-  ) {
-    this.loading = true;
-  }
+  constructor(private imageService: PortfolioImagesService) {}
 
   showFullSize(url: string) {
     const fullSizeUrl = this.openFullSize(url);
@@ -69,18 +57,5 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getImagesFromS3();
-  }
-
-  ngAfterViewInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.loading = true;
-      } else if (
-        event instanceof NavigationEnd ||
-        event instanceof NavigationCancel
-      ) {
-        this.loading = false;
-      }
-    });
   }
 }
