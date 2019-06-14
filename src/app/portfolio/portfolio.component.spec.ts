@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PortfolioComponent } from './portfolio.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('PortfolioComponent', () => {
   let component: PortfolioComponent;
@@ -10,7 +11,7 @@ describe('PortfolioComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PortfolioComponent],
-      imports: [NoopAnimationsModule]
+      imports: [NoopAnimationsModule, HttpClientModule]
     }).compileComponents();
   }));
 

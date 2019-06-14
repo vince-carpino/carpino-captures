@@ -2,12 +2,13 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { ContactFormEmailService } from './contact-form-email.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
-describe('ConnectionService', () => {
+describe('ContactFormEmailService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [ContactFormEmailService],
-      imports: [NoopAnimationsModule]
+      imports: [NoopAnimationsModule, HttpClientModule]
     });
   });
 

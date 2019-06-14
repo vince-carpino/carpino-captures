@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { PortfolioImagesService } from './portfolio-images.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('PortfolioImagesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PortfolioImagesService]
+      providers: [PortfolioImagesService],
+      imports: [HttpClientModule]
     });
   });
 
