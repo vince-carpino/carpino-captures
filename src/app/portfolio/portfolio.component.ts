@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PortfolioImagesService } from '../services/portfolio-images.service';
 import { Picture } from '../picture/picture';
 import {
@@ -8,6 +8,7 @@ import {
   transition,
   animate
 } from '@angular/animations';
+import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './portfolio.component.html',
@@ -19,10 +20,11 @@ import {
     ])
   ]
 })
-export class PortfolioComponent implements OnInit {
+export class PortfolioComponent implements OnInit, OnDestroy {
   pageTitle = 'Portfolio';
   errorMessage = '';
   master: Picture[] = [];
+  sub: Subscription;
 
   constructor(private imageService: PortfolioImagesService) {}
 
@@ -46,7 +48,7 @@ export class PortfolioComponent implements OnInit {
   }
 
   getImagesFromS3() {
-    this.imageService.getImagesFromManifest().subscribe(
+    this.sub = this.imageService.getImagesFromManifest().subscribe(
       pics => {
         pics = pics.sort(this.compareFunc);
         this.master = pics;
@@ -57,5 +59,9 @@ export class PortfolioComponent implements OnInit {
 
   ngOnInit() {
     this.getImagesFromS3();
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

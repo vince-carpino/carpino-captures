@@ -22,6 +22,13 @@ import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+const routes = [
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: '', component: PortfolioComponent, pathMatch: 'full' },
+  { path: '**', component: PortfolioComponent, pathMatch: 'full' }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,12 +51,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSnackBarModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: 'about', component: AboutComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: '', component: PortfolioComponent, pathMatch: 'full' },
-      { path: '**', component: PortfolioComponent, pathMatch: 'full' }
-    ])
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
