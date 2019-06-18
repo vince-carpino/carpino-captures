@@ -54,7 +54,7 @@
     <button
       mat-button
       (click)="processForm()"
-      [disabled]="disableSubmitButton"
+      [disabled]="contactForm.invalid"
       id="submit"
     >
       Submit

@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   FormControl,
   Validators,
@@ -14,6 +14,7 @@ import {
   animate
 } from '@angular/animations';
 import { MatSnackBar } from '@angular/material';
+import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './contact.component.html',
@@ -25,11 +26,11 @@ import { MatSnackBar } from '@angular/material';
     ])
   ]
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
   pageTitle = 'Contact';
 
   contactForm: FormGroup;
-  disableSubmitButton = true;
+  emailSubscription: Subscription;
   successMessage = 'Your message was sent';
   successConfig = { duration: 3000, panelClass: ['snack-bar-success'] };
   errorMessage = 'Something went wrong, please try again';
@@ -38,10 +39,6 @@ export class ContactComponent implements OnInit {
   name = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
   message = new FormControl('', [Validators.required]);
-
-  @HostListener('input') onInput() {
-    this.disableSubmitButton = !this.contactForm.valid;
-  }
 
   getErrorMessage(field: string) {
     switch (field) {
@@ -65,22 +62,21 @@ export class ContactComponent implements OnInit {
   }
 
   processForm() {
-    this.disableSubmitButton = true;
     this.contactForm.disable();
 
-    this.emailService.sendMessage(this.contactForm.value).subscribe(
-      () => {
-        this.openSnackbar(this.successMessage, this.successConfig);
-        this.contactForm.reset();
-        this.contactForm.enable();
-        this.disableSubmitButton = true;
-      },
-      error => {
-        this.openSnackbar(this.errorMessage, this.errorConfig);
-        this.contactForm.enable();
-        this.disableSubmitButton = false;
-      }
-    );
+    this.emailSubscription = this.emailService
+      .sendMessage(this.contactForm.value)
+      .subscribe(
+        () => {
+          this.openSnackbar(this.successMessage, this.successConfig);
+          this.contactForm.reset();
+          this.contactForm.enable();
+        },
+        () => {
+          this.openSnackbar(this.errorMessage, this.errorConfig);
+          this.contactForm.enable();
+        }
+      );
   }
 
   constructor(
@@ -96,4 +92,8 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  ngOnDestroy() {
+    this.emailSubscription.unsubscribe();
+  }
 }
