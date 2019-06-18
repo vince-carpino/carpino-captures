@@ -23,3 +23,21 @@ html,
 body {
   height: 100%;
 }
+
+.snack-bar-success {
+  background: $fui-turquoise;
+  border: 3px solid $fui-greensea;
+
+  simple-snack-bar {
+    justify-content: center;
+  }
+}
+
+.snack-bar-error {
+  background: $fui-alizarin;
+  border: 3px solid $fui-pomegranate;
+
+  simple-snack-bar {
+    justify-content: center;
+  }
+}

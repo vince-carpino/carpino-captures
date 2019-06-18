@@ -20,8 +20,8 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./contact.component.scss'],
   animations: [
     trigger('fadeIn', [
-      state('in', style({ opacity: 1, top: '0px' })),
-      transition(':enter', [style({ opacity: 0, top: '-10px' }), animate(600)])
+      state('in', style({ opacity: 1 })),
+      transition(':enter', [style({ opacity: 0 }), animate(600)])
     ])
   ]
 })
@@ -31,9 +31,9 @@ export class ContactComponent implements OnInit {
   contactForm: FormGroup;
   disableSubmitButton = true;
   successMessage = 'Your message was sent';
-  successDelay = { duration: 3000 };
-  errorMessage = 'There was an error sending your message, please try again';
-  errorDelay = { duration: 5000 };
+  successConfig = { duration: 3000, panelClass: ['snack-bar-success'] };
+  errorMessage = 'Something went wrong, please try again';
+  errorConfig = { duration: 5000, panelClass: ['snack-bar-error'] };
 
   name = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -70,13 +70,15 @@ export class ContactComponent implements OnInit {
 
     this.emailService.sendMessage(this.contactForm.value).subscribe(
       () => {
-        this.openSnackbar(this.successMessage, this.successDelay);
+        this.openSnackbar(this.successMessage, this.successConfig);
         this.contactForm.reset();
         this.contactForm.enable();
         this.disableSubmitButton = true;
       },
       error => {
-        this.openSnackbar(this.errorMessage, this.errorDelay);
+        this.openSnackbar(this.errorMessage, this.errorConfig);
+        this.contactForm.enable();
+        this.disableSubmitButton = false;
       }
     );
   }
