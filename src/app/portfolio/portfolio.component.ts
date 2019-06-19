@@ -61,7 +61,9 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     this.getImagesFromS3();
   }
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 }
