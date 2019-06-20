@@ -24,3 +24,10 @@ span {
   background-color: $fui-clouds;
   max-width: 35vw;
 }
+
+@media screen and (max-width: 800px) {
+  #bio {
+    padding: 2rem;
+    max-width: 90vw;
+  }
+}
