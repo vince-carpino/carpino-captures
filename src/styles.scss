@@ -24,6 +24,15 @@ body {
   height: 100%;
 }
 
+.snack-bar-sending {
+  background: $fui-peterriver;
+  border: 3px solid $fui-belizehole;
+
+  simple-snack-bar {
+    justify-content: center;
+  }
+}
+
 .snack-bar-success {
   background: $fui-turquoise;
   border: 3px solid $fui-greensea;

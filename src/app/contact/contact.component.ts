@@ -31,7 +31,9 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   contactForm: FormGroup;
   emailSubscription: Subscription;
-  successMessage = 'Your message was sent';
+  sendingMessage = 'Sending...';
+  sendingConfig = { panelClass: ['snack-bar-sending'] };
+  successMessage = 'Sent!';
   successConfig = { duration: 3000, panelClass: ['snack-bar-success'] };
   errorMessage = 'Something went wrong, please try again';
   errorConfig = { duration: 5000, panelClass: ['snack-bar-error'] };
@@ -62,6 +64,7 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   processForm() {
+    this.openSnackbar(this.sendingMessage, this.sendingConfig);
     this.contactForm.disable();
 
     this.emailSubscription = this.emailService
