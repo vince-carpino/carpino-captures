@@ -12,16 +12,16 @@ body {
   margin: 0;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 .page-title {
   text-align: center;
   text-transform: lowercase;
   font-weight: bold;
   color: black;
-}
-
-html,
-body {
-  height: 100%;
 }
 
 .snack-bar-sending {
