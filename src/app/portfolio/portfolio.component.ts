@@ -9,6 +9,7 @@ import {
   animate
 } from '@angular/animations';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './portfolio.component.html',
@@ -26,7 +27,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   master: Picture[] = [];
   sub: Subscription;
 
-  constructor(private imageService: PortfolioImagesService) {}
+  constructor(private imageService: PortfolioImagesService, private route: ActivatedRoute) {}
 
   showFullSize(url: string) {
     const fullSizeUrl = this.getFullSizeUrl(url);
@@ -48,13 +49,15 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   }
 
   getImagesFromS3() {
-    this.sub = this.imageService.getImagesFromManifest().subscribe(
-      pics => {
-        pics = pics.sort(this.compareFunc);
-        this.master = pics;
-      },
-      error => (this.errorMessage = <any>error)
-    );
+    // this.sub = this.imageService.getImagesFromManifest().subscribe(
+    //   pics => {
+    //     pics = pics.sort(this.compareFunc);
+    //     this.master = pics;
+    //   },
+    //   error => (this.errorMessage = <any>error)
+    // );
+
+    this.master = this.route.snapshot.data.images.sort(this.compareFunc);
   }
 
   ngOnInit() {

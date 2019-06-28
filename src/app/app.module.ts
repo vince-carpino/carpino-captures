@@ -21,12 +21,23 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PortfolioResolver } from './resolvers/portfolio.resolver';
 
 const routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: '', component: PortfolioComponent, pathMatch: 'full' },
-  { path: '**', component: PortfolioComponent, pathMatch: 'full' }
+  {
+    path: '',
+    component: PortfolioComponent,
+    pathMatch: 'full',
+    resolve: { images: PortfolioResolver }
+  },
+  {
+    path: '**',
+    component: PortfolioComponent,
+    pathMatch: 'full',
+    resolve: { images: PortfolioResolver }
+  }
 ];
 
 @NgModule({
@@ -53,7 +64,7 @@ const routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [PortfolioResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
