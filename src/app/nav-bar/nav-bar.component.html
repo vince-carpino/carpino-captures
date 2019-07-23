@@ -1,21 +1,32 @@
 <mat-toolbar>
-  <span>
+  <div fxHide.gt-sm>
+    <button mat-icon-button (click)="toggleSidenav()">
+      <i class="material-icons-round">menu</i>
+    </button>
+  </div>
+  <div>
     <button mat-button [routerLink]="'/'" id="site-name-button">
       {{ siteName }}
     </button>
-  </span>
-  <span class="toolbar-space-filler"></span>
-  <span *ngFor="let link of linkNames" class="nav-bar-link">
-    <button
-      mat-button
-      (click)="navButtonClicked(link)"
-      [routerLink]="[getLinkFromName(link)]"
-    >
-      <mat-icon
-        *ngIf="getSvgFromLinkName(link)"
-        [svgIcon]="getSvgFromLinkName(link)"
-      ></mat-icon>
-      {{ link }}
-    </button>
-  </span>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.lt-md>
+    <ul fxLayout fxLayoutGap="15px" class="nav-items">
+      <li *ngFor="let link of linkNames" class="nav-bar-link">
+        <button
+          mat-button
+          (click)="navButtonClicked(link)"
+          [routerLink]="[getLinkFromName(link)]"
+        >
+          <mat-icon
+            *ngIf="link == 'Instagram'"
+            [svgIcon]="getSvgFromLinkName(link)"
+          ></mat-icon>
+          <i *ngIf="link !== 'Instagram'" class="material-icons-round">
+            {{ getSvgFromLinkName(link) }}
+          </i>
+          {{ link }}
+        </button>
+      </li>
+    </ul>
+  </div>
 </mat-toolbar>

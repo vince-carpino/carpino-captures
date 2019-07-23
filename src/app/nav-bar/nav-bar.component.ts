@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'cc-nav-bar',
@@ -10,17 +10,19 @@ export class NavBarComponent implements OnInit {
   linkNames = ['Home', 'Instagram', 'About', 'Contact'];
   instagramUrl = 'https://www.instagram.com/vince_carpino/';
 
+  @Output() public sidenavToggle = new EventEmitter();
+
   constructor() {}
 
   ngOnInit() {}
 
+  public toggleSidenav() {
+    this.sidenavToggle.emit();
+  }
+
   navButtonClicked(link: string) {
-    switch (link) {
-      case this.linkNames[1]:
-        this.openLink(this.instagramUrl);
-        break;
-      default:
-        break;
+    if (link === this.linkNames[1]) {
+      this.openLink(this.instagramUrl);
     }
   }
 
@@ -46,16 +48,16 @@ export class NavBarComponent implements OnInit {
 
     switch (linkName) {
       case this.linkNames[0]:
-        svgName = 'home-icon';
+        svgName = 'home';
         break;
       case this.linkNames[1]:
         svgName = 'instagram-icon';
         break;
       case this.linkNames[2]:
-        svgName = 'about-me-icon';
+        svgName = 'person';
         break;
       case this.linkNames[3]:
-        svgName = 'email-icon';
+        svgName = 'email';
         break;
       default:
         break;

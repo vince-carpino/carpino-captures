@@ -1,5 +1,13 @@
 @import '../styles/vars';
 
+li {
+  text-decoration: none;
+}
+
+.nav-items {
+  list-style-type: none;
+}
+
 .nav-bar-link {
   padding: 0 14px;
 
@@ -14,7 +22,7 @@
 }
 
 mat-toolbar {
-  border-radius: 0px;
+  // border-radius: 0px 0px 5px 5px;
   margin-bottom: 0.5rem;
   top: 0;
   left: 0;
