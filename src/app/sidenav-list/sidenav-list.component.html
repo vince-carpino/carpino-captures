@@ -1,0 +1,22 @@
+<mat-nav-list>
+  <a
+    *ngFor="let link of navLinks"
+    mat-list-item
+    [routerLink]="[getRouterLink(link)]"
+    (click)="handleClickedLink(link)"
+  >
+    <mat-icon
+      *ngIf="link.title == 'Instagram'"
+      matListIcon
+      [svgIcon]="link.iconName"
+    ></mat-icon>
+    <i
+      *ngIf="link.title != 'Instagram'"
+      matListIcon
+      class="material-icons-round"
+    >
+      {{ getNavIconFromLink(link) }}
+    </i>
+    <span class="nav-item-title">{{ link.title }}</span>
+  </a>
+</mat-nav-list>

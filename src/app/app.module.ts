@@ -18,9 +18,12 @@ import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioResolver } from './resolvers/portfolio.resolver';
+import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 
 const routes = [
   { path: 'about', component: AboutComponent },
@@ -41,24 +44,27 @@ const routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
     AboutComponent,
+    AppComponent,
     ContactComponent,
-    PortfolioComponent,
+    FooterComponent,
     NavBarComponent,
-    FooterComponent
+    PortfolioComponent,
+    SidenavListComponent
   ],
   imports: [
-    BrowserModule,
     BrowserAnimationsModule,
+    BrowserModule,
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
     MatButtonModule,
     MatCardModule,
+    MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatFormFieldModule,
+    MatListModule,
+    MatSidenavModule,
     MatSnackBarModule,
     MatToolbarModule,
     ReactiveFormsModule,

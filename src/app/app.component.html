@@ -1,7 +1,14 @@
-<cc-nav-bar></cc-nav-bar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation">
+    <cc-sidenav-list (toggleSidenav)="sidenav.close()"></cc-sidenav-list>
+  </mat-sidenav>
 
-<div class="main">
-  <router-outlet></router-outlet>
-</div>
+  <mat-sidenav-content>
+    <cc-nav-bar (sidenavToggle)="sidenav.toggle()"></cc-nav-bar>
+    <div class="main">
+      <router-outlet></router-outlet>
+    </div>
+    <cc-footer></cc-footer>
+  </mat-sidenav-content>
 
-<cc-footer></cc-footer>
+</mat-sidenav-container>
