@@ -10,21 +10,21 @@
     </button>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.lt-md>
-    <ul fxLayout fxLayoutGap="15px" class="nav-items">
-      <li *ngFor="let link of linkNames" class="nav-bar-link">
+    <ul fxLayout fxLayoutGap="1rem" class="nav-items">
+      <li *ngFor="let link of navLinks" class="nav-bar-link">
         <button
           mat-button
           (click)="navButtonClicked(link)"
-          [routerLink]="[getLinkFromName(link)]"
+          [routerLink]="[getUrlFromLink(link)]"
         >
           <mat-icon
-            *ngIf="link == 'Instagram'"
-            [svgIcon]="getSvgFromLinkName(link)"
+            *ngIf="link === navLinks[1]"
+            [svgIcon]="getSvgFromLink(link)"
           ></mat-icon>
-          <i *ngIf="link !== 'Instagram'" class="material-icons-round">
-            {{ getSvgFromLinkName(link) }}
+          <i *ngIf="link !== navLinks[1]" class="material-icons-round">
+            {{ getSvgFromLink(link) }}
           </i>
-          {{ link }}
+          {{ link.title }}
         </button>
       </li>
     </ul>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NavLink } from '../navlink/navlink';
 
 @Component({
   selector: 'cc-nav-bar',
@@ -7,8 +8,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   siteName = 'Carpino Captures';
-  linkNames = ['Home', 'Instagram', 'About', 'Contact'];
   instagramUrl = 'https://www.instagram.com/vince_carpino/';
+
+  navLinks: NavLink[] = [
+    { title: 'Home', url: '/', iconName: 'home' },
+    { title: 'Instagram', url: this.instagramUrl, iconName: 'instagram-icon' },
+    { title: 'About', url: '/about', iconName: 'person' },
+    { title: 'Contact', url: '/contact', iconName: 'email' }
+  ];
 
   @Output() public sidenavToggle = new EventEmitter();
 
@@ -20,50 +27,22 @@ export class NavBarComponent implements OnInit {
     this.sidenavToggle.emit();
   }
 
-  navButtonClicked(link: string) {
-    if (link === this.linkNames[1]) {
+  navButtonClicked(link: NavLink) {
+    if (link === this.navLinks[1]) {
       this.openLink(this.instagramUrl);
     }
   }
 
-  getLinkFromName(linkName: string): string {
-    let link = '';
-
-    switch (linkName) {
-      case this.linkNames[2]:
-        link = '/about';
-        break;
-      case this.linkNames[3]:
-        link = '/contact';
-        break;
-      default:
-        break;
+  getUrlFromLink(link: NavLink): string {
+    if (link !== this.navLinks[1]) {
+      return link.url;
     }
 
-    return link;
+    return '';
   }
 
-  getSvgFromLinkName(linkName: string): string {
-    let svgName = '';
-
-    switch (linkName) {
-      case this.linkNames[0]:
-        svgName = 'home';
-        break;
-      case this.linkNames[1]:
-        svgName = 'instagram-icon';
-        break;
-      case this.linkNames[2]:
-        svgName = 'person';
-        break;
-      case this.linkNames[3]:
-        svgName = 'email';
-        break;
-      default:
-        break;
-    }
-
-    return svgName;
+  getSvgFromLink(link: NavLink): string {
+    return link.iconName;
   }
 
   openLink(url: string) {
