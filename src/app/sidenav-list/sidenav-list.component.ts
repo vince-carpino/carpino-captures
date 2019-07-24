@@ -21,10 +21,6 @@ export class SidenavListComponent implements OnInit {
 
   ngOnInit() {}
 
-  getNavIconFromLink(link: NavLink) {
-    return link.iconName;
-  }
-
   closeSidenav() {
     this.toggleSidenav.emit();
   }
@@ -32,25 +28,16 @@ export class SidenavListComponent implements OnInit {
   handleClickedLink(link: NavLink) {
     this.closeSidenav();
 
-    if (link.title === this.navLinks[1].title) {
+    if (link === this.navLinks[1]) {
       window.open(link.url);
     }
   }
 
   getRouterLink(link: NavLink) {
-    let routerLink = '';
-
-    switch (link) {
-      case this.navLinks[2]:
-        routerLink = '/about';
-        break;
-      case this.navLinks[3]:
-        routerLink = '/contact';
-        break;
-      default:
-        break;
+    if (link !== this.navLinks[1]) {
+      return link.url;
     }
 
-    return routerLink;
+    return '';
   }
 }
