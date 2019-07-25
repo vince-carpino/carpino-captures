@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NavLink } from '../navlink/navlink';
+import { NavLink } from '../navLink/navLink';
 
 @Component({
   selector: 'cc-nav-bar',
@@ -39,10 +39,6 @@ export class NavBarComponent implements OnInit {
     }
 
     return '';
-  }
-
-  getSvgFromLink(link: NavLink): string {
-    return link.iconName;
   }
 
   openLink(url: string) {

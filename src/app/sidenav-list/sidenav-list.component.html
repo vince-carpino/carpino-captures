@@ -6,17 +6,17 @@
     (click)="handleClickedLink(link)"
   >
     <mat-icon
-      *ngIf="link.title == 'Instagram'"
+      *ngIf="link === navLinks[1]"
       matListIcon
       [svgIcon]="link.iconName"
     ></mat-icon>
     <i
-      *ngIf="link.title != 'Instagram'"
+      *ngIf="link !== navLinks[1]"
       matListIcon
       class="material-icons-round"
     >
       {{ link.iconName }}
     </i>
-    <span class="nav-item-title">{{ link.title }}</span>
+    <span class="nav-item-title">{{ link.title | lowercase }}</span>
   </a>
 </mat-nav-list>

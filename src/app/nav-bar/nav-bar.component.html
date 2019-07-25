@@ -6,7 +6,7 @@
   </div>
   <div>
     <button mat-button [routerLink]="'/'" id="site-name-button">
-      {{ siteName }}
+      {{ siteName | uppercase }}
     </button>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.lt-md>
@@ -19,12 +19,12 @@
         >
           <mat-icon
             *ngIf="link === navLinks[1]"
-            [svgIcon]="getSvgFromLink(link)"
+            [svgIcon]="link.iconName"
           ></mat-icon>
           <i *ngIf="link !== navLinks[1]" class="material-icons-round">
-            {{ getSvgFromLink(link) }}
+            {{ link.iconName }}
           </i>
-          {{ link.title }}
+          {{ link.title | lowercase }}
         </button>
       </li>
     </ul>

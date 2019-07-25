@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NavLink } from '../navlink/navlink';
+import { NavLink } from '../navLink/navLink';
 
 @Component({
   selector: 'cc-sidenav-list',
