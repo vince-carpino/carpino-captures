@@ -4,6 +4,8 @@
 
 /server.js
 
+/.firebase
+
 # compiled output
 /dist
 /tmp
