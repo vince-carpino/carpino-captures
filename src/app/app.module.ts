@@ -16,8 +16,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AboutComponent } from './about/about.component';
+import { AboutModule } from './about/about.module';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
+import { environment } from 'src/environments/environment';
 import { FooterComponent } from './footer/footer.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -25,7 +27,6 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioResolver } from './resolvers/portfolio.resolver';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
-import { environment } from 'src/environments/environment';
 
 const routes = [
   { path: 'about', component: AboutComponent },
@@ -46,7 +47,6 @@ const routes = [
 
 @NgModule({
   declarations: [
-    AboutComponent,
     AppComponent,
     ContactComponent,
     FooterComponent,
@@ -55,6 +55,7 @@ const routes = [
     SidenavListComponent
   ],
   imports: [
+    AboutModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
     BrowserModule,
