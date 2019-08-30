@@ -1,3 +1,4 @@
+import { AngularFireModule } from '@angular/fire';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,6 +25,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioResolver } from './resolvers/portfolio.resolver';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
+import { environment } from 'src/environments/environment';
 
 const routes = [
   { path: 'about', component: AboutComponent },
@@ -53,6 +55,7 @@ const routes = [
     SidenavListComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
     BrowserModule,
     FlexLayoutModule,
