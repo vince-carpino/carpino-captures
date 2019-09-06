@@ -28,7 +28,7 @@ import { NavBarModule } from './nav-bar/nav-bar.module';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioModule } from './portfolio/portfolio.module';
 import { PortfolioResolver } from './resolvers/portfolio.resolver';
-import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
+import { SidenavListModule } from './sidenav-list/sidenav-list.module';
 
 const routes = [
   { path: 'about', component: AboutComponent },
@@ -50,7 +50,6 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavListComponent
   ],
   imports: [
     AboutModule,
@@ -74,7 +73,8 @@ const routes = [
     NavBarModule,
     PortfolioModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    SidenavListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
