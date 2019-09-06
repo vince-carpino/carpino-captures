@@ -1,11 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [CommonModule, MatButtonModule, MatIconModule],
+  imports: [SharedModule],
   declarations: [FooterComponent],
   exports: [FooterComponent]
 })
