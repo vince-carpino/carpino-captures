@@ -19,6 +19,7 @@ import { AboutComponent } from './about/about.component';
 import { AboutModule } from './about/about.module';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
+import { ContactModule } from './contact/contact.module';
 import { environment } from 'src/environments/environment';
 import { FooterComponent } from './footer/footer.component';
 import { MatListModule } from '@angular/material/list';
@@ -48,7 +49,6 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ContactComponent,
     FooterComponent,
     NavBarComponent,
     PortfolioComponent,
@@ -59,6 +59,7 @@ const routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
     BrowserModule,
+    ContactModule,
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
