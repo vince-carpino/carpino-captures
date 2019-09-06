@@ -26,6 +26,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NavBarModule } from './nav-bar/nav-bar.module';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { PortfolioModule } from './portfolio/portfolio.module';
 import { PortfolioResolver } from './resolvers/portfolio.resolver';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 
@@ -49,7 +50,6 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    PortfolioComponent,
     SidenavListComponent
   ],
   imports: [
@@ -72,10 +72,11 @@ const routes = [
     MatSnackBarModule,
     MatToolbarModule,
     NavBarModule,
+    PortfolioModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [PortfolioResolver],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
