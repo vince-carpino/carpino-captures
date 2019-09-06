@@ -21,7 +21,7 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { ContactModule } from './contact/contact.module';
 import { environment } from 'src/environments/environment';
-import { FooterComponent } from './footer/footer.component';
+import { FooterModule } from './footer/footer.module';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -49,7 +49,6 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     NavBarComponent,
     PortfolioComponent,
     SidenavListComponent
@@ -61,6 +60,7 @@ const routes = [
     BrowserModule,
     ContactModule,
     FlexLayoutModule,
+    FooterModule,
     FormsModule,
     HttpClientModule,
     MatButtonModule,
