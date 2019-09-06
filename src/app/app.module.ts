@@ -24,7 +24,7 @@ import { environment } from 'src/environments/environment';
 import { FooterModule } from './footer/footer.module';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarModule } from './nav-bar/nav-bar.module';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioResolver } from './resolvers/portfolio.resolver';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
@@ -49,7 +49,6 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
     PortfolioComponent,
     SidenavListComponent
   ],
@@ -72,6 +71,7 @@ const routes = [
     MatSidenavModule,
     MatSnackBarModule,
     MatToolbarModule,
+    NavBarModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
