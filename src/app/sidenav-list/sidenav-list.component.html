@@ -10,13 +10,13 @@
       matListIcon
       [svgIcon]="link.iconName"
     ></mat-icon>
-    <i
-      *ngIf="link !== navLinks[1]"
-      matListIcon
-      class="material-icons-round"
-    >
+    <i *ngIf="link !== navLinks[1]" matListIcon class="material-icons-round">
       {{ link.iconName }}
     </i>
     <span class="nav-item-title">{{ link.title | lowercase }}</span>
+  </a>
+  <a mat-list-item href="{{ mailToUrl }}">
+    <i matListIcon class="material-icons-round">email</i>
+    <span class="nav-item-title">contact</span>
   </a>
 </mat-nav-list>

@@ -23,7 +23,7 @@ import { SidenavListModule } from './sidenav-list/sidenav-list.module';
 
 const routes = [
   { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
+  // { path: 'contact', component: ContactComponent },
   {
     path: '',
     component: PortfolioComponent,

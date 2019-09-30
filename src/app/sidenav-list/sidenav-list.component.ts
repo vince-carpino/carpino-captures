@@ -8,11 +8,13 @@ import { NavLink } from '../navLink/navLink';
 })
 export class SidenavListComponent implements OnInit {
   instagramUrl = 'https://www.instagram.com/vince_carpino/';
+  mailToUrl =
+    'mailto:contact.carpinocaptures@gmail.com?subject=Contact Form Submission';
   navLinks: NavLink[] = [
     { title: 'Home', url: '/', iconName: 'home' },
     { title: 'Instagram', url: this.instagramUrl, iconName: 'instagram-icon' },
-    { title: 'About', url: '/about', iconName: 'person' },
-    { title: 'Contact', url: '/contact', iconName: 'email' }
+    { title: 'About', url: '/about', iconName: 'person' }
+    // { title: 'Contact', url: '/contact', iconName: 'email' }
   ];
 
   @Output() public toggleSidenav = new EventEmitter();
