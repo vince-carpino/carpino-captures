@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ContactFormEmailService {
   url = 'http://localhost:3000/send';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private db: AngularFirestore) {}
 
   sendMessage(messageContent: any) {
     return this.http.post(this.url, JSON.stringify(messageContent), {

@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   FormControl,
@@ -67,25 +68,41 @@ export class ContactComponent implements OnInit, OnDestroy {
     this.openSnackbar(this.sendingMessage, this.sendingConfig);
     this.contactForm.disable();
 
-    this.emailSubscription = this.emailService
-      .sendMessage(this.contactForm.value)
-      .subscribe(
-        () => {
-          this.openSnackbar(this.successMessage, this.successConfig);
-          this.contactForm.reset();
-          this.contactForm.enable();
-        },
-        () => {
-          this.openSnackbar(this.errorMessage, this.errorConfig);
-          this.contactForm.enable();
-        }
-      );
+    this.sendToDb();
+
+    // this.emailSubscription = this.emailService
+    //   .sendMessage(this.contactForm.value)
+    //   .subscribe(
+    //     () => {
+    //       this.openSnackbar(this.successMessage, this.successConfig);
+    //       this.contactForm.reset();
+    //       this.contactForm.enable();
+    //     },
+    //     () => {
+    //       this.openSnackbar(this.errorMessage, this.errorConfig);
+    //       this.contactForm.enable();
+    //     }
+    //   );
+  }
+
+  sendToDb() {
+    const { name, email, message } = this.contactForm.value;
+    const date = Date();
+    const html = `
+      <div>From: ${name}</div>
+      <div>Email: <a href="mailto:${email}">${email}</a></div>
+      <div>Date: ${date}</div>
+      <div>Message: ${message}</div>
+    `;
+    const formRequest = { name, email, message, date, html };
+    this.db.collection('/messages').add(formRequest);
   }
 
   constructor(
     private fb: FormBuilder,
     private snackbar: MatSnackBar,
-    private emailService: ContactFormEmailService
+    private emailService: ContactFormEmailService,
+    private db: AngularFirestore
   ) {
     this.contactForm = this.fb.group({
       name: this.name,
