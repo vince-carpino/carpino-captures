@@ -3,7 +3,15 @@
 </h1>
 
 <span [@fadeIn]="'in'">
-  <img src="{{ getBioImageUrl() }}" />
+  <figure>
+    <img src="{{ getBioImageUrl() }}" />
+    <figcaption>
+      Photo by
+      <a href="https://www.instagram.com/minnahkazi/" target="_blank"
+        >Minnah Kazi</a
+      >
+    </figcaption>
+  </figure>
   <div>
     <h3 id="bio">
       My name is Vince Carpino and I am a recent Computer Science graduate from

@@ -15,6 +15,14 @@ span {
   min-height: 75vh;
 }
 
+figcaption {
+  color: $fui-silver;
+
+  a {
+    color: $fui-silver;
+  }
+}
+
 #bio {
   text-align: center;
   text-align-last: center;
