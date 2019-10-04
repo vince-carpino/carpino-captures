@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { Resolve } from '@angular/router';
 import { PortfolioImagesService } from '../services/portfolio-images.service';
 import { Picture } from '../picture/picture';
 import { Observable } from 'rxjs';
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PortfolioResolver implements Resolve<Picture[]> {
   constructor(private imageService: PortfolioImagesService) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<Picture[]> {
+  resolve(): Observable<Picture[]> {
     return this.imageService.getImagesFromManifest();
   }
 }

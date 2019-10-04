@@ -61,6 +61,7 @@ const routes = [
     RouterModule.forRoot(routes),
     SidenavListModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [PortfolioResolver]
 })
 export class AppModule {}
