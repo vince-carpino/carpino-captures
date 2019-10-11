@@ -27,7 +27,22 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   master: Picture[] = [];
   sub: Subscription;
 
-  constructor(private imageService: PortfolioImagesService, private route: ActivatedRoute) {}
+  constructor(
+    private imageService: PortfolioImagesService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.getImagesFromS3();
+    const el = document.getElementsByTagName('router-outlet')[0];
+    el.scrollIntoView({ block: 'end' });
+  }
+
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 
   showFullSize(url: string) {
     const fullSizeUrl = this.getFullSizeUrl(url);
@@ -58,15 +73,5 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     // );
 
     this.master = this.route.snapshot.data.images.sort(this.compareFunc);
-  }
-
-  ngOnInit() {
-    this.getImagesFromS3();
-  }
-
-  ngOnDestroy() {
-    if (this.sub) {
-      this.sub.unsubscribe();
-    }
   }
 }

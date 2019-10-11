@@ -40,9 +40,7 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     AboutModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

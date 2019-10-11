@@ -29,5 +29,8 @@ export class AboutComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const el = document.getElementsByTagName('router-outlet')[0];
+    el.scrollIntoView({ block: 'end' });
+  }
 }
