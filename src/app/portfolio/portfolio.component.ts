@@ -34,7 +34,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getImagesFromS3();
-    const el = document.getElementsByTagName('router-outlet')[0];
+    const el = document.getElementsByTagName('img')[0];
     el.scrollIntoView({ block: 'end' });
   }
 
