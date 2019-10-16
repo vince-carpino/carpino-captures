@@ -4,10 +4,12 @@ img {
   object-fit: contain;
   margin: 5px;
   cursor: pointer;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
-  &:hover {
-    transform: scale(1.02);
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.02);
+    }
   }
 }
 
