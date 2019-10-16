@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { PortfolioImagesService } from '../services/portfolio-images.service';
 import { Picture } from '../picture/picture';
 import {
@@ -21,7 +21,7 @@ import { ActivatedRoute } from '@angular/router';
     ])
   ]
 })
-export class PortfolioComponent implements OnInit, OnDestroy {
+export class PortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
   pageTitle = 'Portfolio';
   errorMessage = '';
   master: Picture[] = [];
@@ -34,7 +34,10 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getImagesFromS3();
-    const el = document.getElementsByTagName('img')[0];
+  }
+
+  ngAfterViewInit(): void {
+    const el = document.getElementsByTagName('router-outlet')[0];
     el.scrollIntoView({ block: 'end' });
   }
 
