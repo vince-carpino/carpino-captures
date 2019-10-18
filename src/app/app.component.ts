@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NightModeService } from './services/night-mode.service';
 
 @Component({
   selector: 'cc-root',
@@ -16,9 +17,12 @@ export class AppComponent {
     'email-icon'
   ];
 
+  isNight = this.nightModeService.isNight();
+
   constructor(
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    public nightModeService: NightModeService
   ) {
     this.iconsToRegister.forEach(icon => {
       this.registerSvgIcon(icon);

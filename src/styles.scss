@@ -3,13 +3,11 @@
 
 * {
   font-family: 'Quicksand', sans-serif;
-  // font-family: 'Quicksand', 'Varela Round', 'Comfortaa', 'Ubuntu', 'Dosis',
-    // 'Baloo', 'Righteous', 'Helvetica Neue', sans-serif;
 }
 
 body {
-  background: white;
-  // background: $matte-black;
+  // background: white;
+  background: $matte-black;
 }
 
 html,
@@ -18,11 +16,49 @@ body {
   margin: 0;
 }
 
+.day-toolbar {
+  background-color: rgba($fui-clouds, 0.7);
+}
+
+.night-toolbar {
+  background-color: rgba($matte-black, 0.7);
+
+  button,
+  .mat-button {
+    color: $fui-clouds;
+    transition: background-color 150ms ease-in-out;
+
+    &:hover {
+      background-color: rgba($fui-wisteria, 0.25);
+    }
+  }
+}
+
+.day-icon {
+  color: black;
+}
+
+.night-icon {
+  color: $fui-clouds;
+}
+
+.night {
+  background-color: $matte-black;
+  color: $fui-clouds;
+
+  * {
+    color: $fui-clouds;
+  }
+}
+
+.mat-toolbar.night {
+  background-color: rgba($fui-wisteria, 0.25);
+}
+
 .page-title {
   text-align: center;
   text-transform: lowercase;
   font-weight: bold;
-  color: black;
 }
 
 .snack-bar-sending {

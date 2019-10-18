@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NightModeService } from '../services/night-mode.service';
 
 @Component({
   selector: 'cc-footer',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  constructor() {}
+  isNight = this.nightModeService.isNight();
+
+  constructor(public nightModeService: NightModeService) {}
 
   ngOnInit() {}
 }

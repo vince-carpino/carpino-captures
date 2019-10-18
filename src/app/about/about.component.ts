@@ -6,6 +6,7 @@ import {
   transition,
   animate
 } from '@angular/animations';
+import { NightModeService } from '../services/night-mode.service';
 
 @Component({
   selector: 'cc-about',
@@ -20,6 +21,7 @@ import {
 })
 export class AboutComponent implements OnInit {
   pageTitle = 'About Me';
+  isNight = this.nightModeService.isNight();
 
   imageUrlPrefix = 'https://s3-us-west-1.amazonaws.com/carpino-captures/';
 
@@ -27,7 +29,7 @@ export class AboutComponent implements OnInit {
     return this.imageUrlPrefix + 'me.jpg';
   }
 
-  constructor() {}
+  constructor(public nightModeService: NightModeService) {}
 
   ngOnInit() {
     const el = document.getElementsByTagName('img')[0];

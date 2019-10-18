@@ -26,10 +26,8 @@ figcaption {
 #bio {
   text-align: center;
   text-align-last: center;
-  border: 5px solid black;
   margin: 2rem;
   padding: 2rem 4rem;
-  background-color: $fui-clouds;
   max-width: 35vw;
 }
 
@@ -38,4 +36,12 @@ figcaption {
     padding: 2rem;
     max-width: 90vw;
   }
+}
+
+.day {
+  border: 5px solid black;
+}
+
+.night {
+  border: 5px solid $fui-silver;
 }

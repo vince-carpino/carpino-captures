@@ -1,7 +1,10 @@
-<mat-toolbar>
+<mat-toolbar [ngClass]="isNight ? 'night-toolbar' : 'day-toolbar'">
   <div fxHide.gt-sm>
     <button mat-icon-button (click)="toggleSidenav()">
-      <i class="material-icons-round">menu</i>
+      <i
+        class="material-icons-round"
+        >menu</i
+      >
     </button>
   </div>
   <div>

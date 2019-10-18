@@ -1,7 +1,7 @@
-<mat-toolbar>
+<mat-toolbar [ngClass]="isNight ? 'night' : 'day'">
   <span style="font-weight: bold;">menu</span>
 </mat-toolbar>
-<mat-nav-list>
+<mat-nav-list [ngClass]="isNight ? 'night' : 'day'">
   <a
     *ngFor="let link of navLinks"
     mat-list-item

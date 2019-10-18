@@ -10,6 +10,7 @@ import {
 } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { NightModeService } from '../services/night-mode.service';
 
 @Component({
   templateUrl: './portfolio.component.html',
@@ -24,12 +25,14 @@ import { ActivatedRoute } from '@angular/router';
 export class PortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
   pageTitle = 'Portfolio';
   errorMessage = '';
+  isNight = this.nightModeService.isNight();
   master: Picture[] = [];
   sub: Subscription;
 
   constructor(
     private imageService: PortfolioImagesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public nightModeService: NightModeService
   ) {}
 
   ngOnInit() {

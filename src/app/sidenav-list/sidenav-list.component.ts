@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NavLink } from '../navLink/navLink';
+import { NightModeService } from '../services/night-mode.service';
 
 @Component({
   selector: 'cc-sidenav-list',
@@ -7,6 +8,7 @@ import { NavLink } from '../navLink/navLink';
   styleUrls: ['./sidenav-list.component.scss']
 })
 export class SidenavListComponent implements OnInit {
+  isNight = this.nightModeService.isNight();
   instagramUrl = 'https://www.instagram.com/vince_carpino/';
   mailToUrl =
     'mailto:contact.carpinocaptures@gmail.com?subject=Contact Form Submission';
@@ -19,7 +21,7 @@ export class SidenavListComponent implements OnInit {
 
   @Output() public toggleSidenav = new EventEmitter();
 
-  constructor() {}
+  constructor(public nightModeService: NightModeService) {}
 
   ngOnInit() {}
 

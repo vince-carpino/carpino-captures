@@ -1,12 +1,12 @@
-<h1 class="page-title" [@fadeIn]="'in'">
+<h1 class="page-title" [ngClass]="{ night: isNight }" [@fadeIn]="'in'">
   {{ pageTitle }}
 </h1>
 
-<div class="container">
+<div [ngClass]="isNight ? 'night' : 'day'" class="container">
   <span>
     <div *ngFor="let pic of master" (deferLoad)="pic.show = true">
       <ng-container *ngIf="pic.show">
-        <img [src]="pic.url" [@fadeIn]="'in'" (click)="showFullSize(pic.url)" />
+        <img [src]="pic.url" [alt]="pic.title" [@fadeIn]="'in'" (click)="showFullSize(pic.url)" />
       </ng-container>
     </div>
   </span>

@@ -4,7 +4,6 @@ span {
   justify-content: center;
   display: flex;
   align-items: center;
-  background-color: $fui-wetasphalt;
   color: $fui-clouds;
 }
 
@@ -15,4 +14,12 @@ a {
 .mat-button {
   border: 2px solid $fui-clouds;
   font-weight: bold;
+}
+
+.day {
+  background-color: $fui-wetasphalt;
+}
+
+.night {
+  background-color: $fui-asbestos;
 }

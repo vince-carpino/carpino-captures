@@ -1,5 +1,5 @@
 <footer>
-  <span>
+  <span [ngClass]="isNight ? 'night' : 'day'">
     <h3>Built on the &nbsp;</h3>
     <a mat-button href="https://angular.io" target="_blank">
       <mat-icon svgIcon="angular-icon"></mat-icon>
