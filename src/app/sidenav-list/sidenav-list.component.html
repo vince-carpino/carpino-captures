@@ -2,18 +2,23 @@
   <span style="font-weight: bold;">menu</span>
 </mat-toolbar>
 <mat-nav-list [ngClass]="isNight ? 'night' : 'day'">
+  <a mat-list-item routerLink="/" style="height: 0;"></a>
   <a
     *ngFor="let link of navLinks"
     mat-list-item
-    [routerLink]="[getRouterLink(link)]"
-    (click)="handleClickedLink(link)"
+    [routerLink]="[getRouterLink(link.url)]"
+    (click)="handleClickedLink(link.url)"
   >
     <mat-icon
-      *ngIf="link === navLinks[1]"
+      *ngIf="link.url === instagramUrl"
       matListIcon
       [svgIcon]="link.iconName"
     ></mat-icon>
-    <i *ngIf="link !== navLinks[1]" matListIcon class="material-icons-round">
+    <i
+      *ngIf="link.url !== instagramUrl"
+      matListIcon
+      class="material-icons-round"
+    >
       {{ link.iconName }}
     </i>
     <span class="nav-item-title">{{ link.title | lowercase }}</span>

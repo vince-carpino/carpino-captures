@@ -29,17 +29,17 @@ export class SidenavListComponent implements OnInit {
     this.toggleSidenav.emit();
   }
 
-  handleClickedLink(link: NavLink) {
+  handleClickedLink(linkUrl: string) {
     this.closeSidenav();
 
-    if (link === this.navLinks[1]) {
-      window.open(link.url);
+    if (linkUrl === this.instagramUrl) {
+      window.open(linkUrl);
     }
   }
 
-  getRouterLink(link: NavLink) {
-    if (link !== this.navLinks[1]) {
-      return link.url;
+  getRouterLink(linkUrl: string) {
+    if (linkUrl !== this.instagramUrl) {
+      return linkUrl;
     }
 
     return '';
