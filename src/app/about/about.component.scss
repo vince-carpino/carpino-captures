@@ -10,9 +10,9 @@ img {
 span {
   display: flex;
   flex-flow: row wrap;
-  align-content: center;
   justify-content: space-evenly;
   min-height: 75vh;
+  align-items: center;
 }
 
 figcaption {
@@ -23,25 +23,16 @@ figcaption {
   }
 }
 
-#bio {
-  text-align: center;
-  text-align-last: center;
+mat-card {
+  max-width: 35rem;
   margin: 2rem;
-  padding: 2rem 4rem;
-  max-width: 35vw;
+  height: fit-content;
 }
 
-@media screen and (max-width: 800px) {
-  #bio {
-    padding: 2rem;
-    max-width: 90vw;
-  }
-}
-
-.day {
-  border: 5px solid black;
+mat-card-content {
+  font-size: 1.2rem;
 }
 
 .night {
-  border: 5px solid $fui-silver;
+  background-color: rgba($fui-wisteria, 0.25);
 }

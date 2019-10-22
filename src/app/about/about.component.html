@@ -12,9 +12,13 @@
       >
     </figcaption>
   </figure>
-  <div>
-    <h3 id="bio" [ngClass]="isNight ? 'night' : 'day'">
-      My name is Vince Carpino and I'm a Computer Science graduate from Chapman
+
+  <mat-card [ngClass]="isNight ? 'night' : 'day'">
+    <mat-card-title>
+      My name is Vince Carpino
+    </mat-card-title>
+    <mat-card-content>
+      I'm a Computer Science graduate from Chapman
       University in Orange, CA.<br /><br />
       My interest in photography goes back several years to my first "real"
       camera, a Nikon 1 V2. I took it on a trip to Central Europe, photos from
@@ -23,6 +27,6 @@
       fell in love with the larger format DSLR. However, soon afterwards, it
       came time to make one last upgrade to a Nikon D750, a full-frame DSLR and
       my absolute favorite of the bunch, hands down.
-    </h3>
-  </div>
+    </mat-card-content>
+  </mat-card>
 </span>
