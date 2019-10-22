@@ -5,48 +5,18 @@
 <div class="container">
   <mat-card [formGroup]="contactForm" [@fadeIn]="'in'">
     <mat-card-title>Send me an email</mat-card-title>
-    <mat-card-content>
+
+    <mat-card-content *ngFor="let form of formData">
       <mat-form-field [hideRequiredMarker]="true" appearance="outline">
-        <mat-label>Name</mat-label>
+        <mat-label>{{ form.title }}</mat-label>
         <input
           matInput
-          placeholder="Michael Scott"
-          formControlName="name"
+          placeholder="{{ form.placeholder }}"
+          formControlName="{{ form.controlName }}"
           required
         />
-        <mat-error *ngIf="name.invalid">
-          {{ getErrorMessage('name') }}
-        </mat-error>
-      </mat-form-field>
-    </mat-card-content>
-
-    <mat-card-content>
-      <mat-form-field [hideRequiredMarker]="true" appearance="outline">
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          placeholder="m.scott@dundermifflin.com"
-          formControlName="email"
-          required
-        />
-        <mat-error *ngIf="email.invalid">
-          {{ getErrorMessage('email') }}
-        </mat-error>
-      </mat-form-field>
-    </mat-card-content>
-
-    <mat-card-content>
-      <mat-form-field [hideRequiredMarker]="true" appearance="outline">
-        <mat-label>Message</mat-label>
-        <textarea
-          matInput
-          placeholder="That's what she said"
-          formControlName="message"
-          required
-          rows="6"
-        ></textarea>
-        <mat-error *ngIf="message.invalid">
-          {{ getErrorMessage('message') }}
+        <mat-error *ngIf="form.control.invalid">
+          {{ getErrorMessage(form.controlName) }}
         </mat-error>
       </mat-form-field>
     </mat-card-content>

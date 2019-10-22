@@ -43,6 +43,27 @@ export class ContactComponent implements OnInit, OnDestroy {
   email = new FormControl('', [Validators.required, Validators.email]);
   message = new FormControl('', [Validators.required]);
 
+  formData = [
+    {
+      title: 'Name',
+      placeholder: 'Michael Scott',
+      controlName: 'name',
+      control: this.name
+    },
+    {
+      title: 'Email',
+      placeholder: 'm.scott@dundermifflin.com',
+      controlName: 'email',
+      control: this.email
+    },
+    {
+      title: 'Message',
+      placeholder: 'That\'s what she said',
+      controlName: 'message',
+      control: this.message
+    }
+  ];
+
   getErrorMessage(field: string) {
     switch (field) {
       case 'name':
