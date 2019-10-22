@@ -8,6 +8,6 @@ export class NightModeService {
 
   isNight(): boolean {
     const hours = new Date().getHours();
-    return hours > 16 || hours < 8;
+    return hours > 19 || hours < 8;
   }
 }
