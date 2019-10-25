@@ -4,7 +4,7 @@
 
 <div [ngClass]="isNight ? 'night' : 'day'" class="container">
   <span>
-    <div *ngFor="let pic of master" (deferLoad)="pic.show = true">
+    <div *ngFor="let pic of master">
       <ng-container *ngIf="pic.show">
         <img [src]="pic.url" [alt]="pic.title" [@fadeIn]="'in'" (click)="showFullSize(pic.url)" />
       </ng-container>
