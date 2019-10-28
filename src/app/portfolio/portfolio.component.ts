@@ -80,4 +80,8 @@ export class PortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.master = this.route.snapshot.data.images.sort(this.compareFunc);
   }
+
+  imageLoaded(e) {}
+
+  thumbnailLoaded(e) {}
 }
