@@ -2,12 +2,31 @@
   {{ pageTitle }}
 </h1>
 
-<div [ngClass]="isNight ? 'night' : 'day'" class="container">
+<!-- <div [ngClass]="isNight ? 'night' : 'day'" class="container">
   <span>
     <div *ngFor="let pic of master">
-      <ng-container *ngIf="pic.show">
-        <img [src]="pic.url" [alt]="pic.title" [@fadeIn]="'in'" (click)="showFullSize(pic.url)" />
-      </ng-container>
+      <img
+        [src]="pic.url"
+        [alt]="pic.title"
+        [@fadeIn]="'in'"
+        (click)="showFullSize(pic.url)"
+      />
+    </div>
+  </span>
+</div> -->
+
+<div [ngClass]="isNight ? 'night' : 'day'" class="container">
+  <span>
+    <div class="img-container" *ngFor="let pic of master">
+      <ngx-progressive-img-loader
+        [height]="'450px'"
+        [width]="'auto'"
+        (imageLoaded)="imageLoaded($event)"
+        (thumbnailLoaded)="thumbnailLoaded($event)"
+        [img]="pic.url"
+        [thumbnail]="getThumbnailUrl(pic.url)"
+        (click)="showFullSize(pic.url)"
+      ></ngx-progressive-img-loader>
     </div>
   </span>
 </div>

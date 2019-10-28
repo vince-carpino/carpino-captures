@@ -59,6 +59,10 @@ export class PortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
     return smallUrl.replace('small', 'full');
   }
 
+  getThumbnailUrl(picUrl: string): string {
+    return picUrl.replace('small', 'smallest');
+  }
+
   compareFunc = (a: Picture, b: Picture) => {
     if (a.fav && !b.fav) {
       return -1;

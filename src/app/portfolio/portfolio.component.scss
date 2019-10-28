@@ -2,7 +2,7 @@
 
 img {
   max-width: 90vw;
-  height: 450px;
+  // height: 28rem;
   object-fit: contain;
   margin: 5px;
   cursor: pointer;
@@ -28,4 +28,8 @@ span {
 .container {
   padding: 10px;
   height: 100%;
+}
+
+.img-container {
+  margin: 0.5rem;
 }
