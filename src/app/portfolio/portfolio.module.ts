@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { PortfolioComponent } from './portfolio.component';
 import { PortfolioResolver } from '../resolvers/portfolio.resolver';
-import { NgxProgressiveImgLoaderModule } from 'ngx-progressive-img-loader';
+// import { NgxProgressiveImgLoaderModule } from 'ngx-progressive-img-loader';
 
 @NgModule({
-  imports: [CommonModule, NgxProgressiveImgLoaderModule],
+  imports: [CommonModule],
+  // imports: [CommonModule, NgxProgressiveImgLoaderModule],
   declarations: [PortfolioComponent],
   exports: [PortfolioComponent],
-  providers: [PortfolioResolver]
+  providers: [PortfolioResolver],
 })
 export class PortfolioModule {}
