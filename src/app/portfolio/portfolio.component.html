@@ -2,6 +2,17 @@
   {{ pageTitle }}
 </h1>
 
+<span id="grid-container">
+  <div id="grid-item" *ngFor="let pic of master">
+    <img
+      [src]="pic.url"
+      [alt]="pic.title"
+      [@fadeIn]="'in'"
+      (click)="showFullSize(pic.url)"
+    />
+  </div>
+</span>
+
 <!-- <div [ngClass]="isNight ? 'night' : 'day'" class="container">
   <span>
     <div *ngFor="let pic of master">
@@ -15,7 +26,7 @@
   </span>
 </div> -->
 
-<div [ngClass]="isNight ? 'night' : 'day'" class="container">
+<!-- <div [ngClass]="isNight ? 'night' : 'day'" class="container">
   <span>
     <div class="img-container" *ngFor="let pic of master">
       <ngx-progressive-img-loader
@@ -29,4 +40,4 @@
       ></ngx-progressive-img-loader>
     </div>
   </span>
-</div>
+</div> -->

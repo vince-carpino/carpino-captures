@@ -1,27 +1,45 @@
 @import '../styles/vars';
 
+$maxWidth: 60vw;
+$maxHeight: 60vw;
+
+$maxWidth-mobile: 95vw;
+$maxHeight-mobile: 95vh;
+
 img {
-  max-width: 90vw;
-  // height: 28rem;
+  // max-width: $maxWidth;
+  // max-height: $maxHeight;
+  max-width: $maxWidth-mobile;
+  max-height: $maxHeight-mobile;
   object-fit: contain;
-  margin: 5px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
   @media (hover: hover) {
     &:hover {
       transform: scale(1.02);
+      transition-delay: 1s;
     }
   }
 }
 
+#grid-container {
+  display: grid;
+}
+
+#grid-item {
+  place-self: center;
+  margin: 1rem;
+}
+
 span {
-  margin: 3px;
+  // margin: 3px;
   align-content: flex-start;
   justify-content: center;
   display: flex;
   flex-flow: row wrap;
-  padding: 5px;
+  // padding: 5px;
+  // padding: 5rem;
   height: 100%;
 }
 
