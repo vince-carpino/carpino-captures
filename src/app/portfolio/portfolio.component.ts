@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { PortfolioImagesService } from '../services/portfolio-images.service';
 import { Picture } from '../picture/picture';
 import {
   trigger,
@@ -30,7 +29,6 @@ export class PortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
   sub: Subscription;
 
   constructor(
-    private imageService: PortfolioImagesService,
     private route: ActivatedRoute,
     public nightModeService: NightModeService
   ) {}
@@ -85,7 +83,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
     this.master = this.route.snapshot.data.images.sort(this.compareFunc);
   }
 
-  imageLoaded(e) {}
+  imageLoaded() {}
 
-  thumbnailLoaded(e) {}
+  thumbnailLoaded() {}
 }
