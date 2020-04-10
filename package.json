@@ -29,7 +29,6 @@
     "core-js": "^2.6.11",
     "express": "^4.16.4",
     "firebase": "^6.6.2",
-    "nodemailer": "^6.4.6",
     "rxjs": "6.5.3",
     "tslib": "^1.11.1",
     "zone.js": "~0.10.3"
