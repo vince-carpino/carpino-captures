@@ -32,7 +32,7 @@ export class AboutComponent implements OnInit {
   constructor(public nightModeService: NightModeService) {}
 
   ngOnInit() {
-    const el = document.getElementsByTagName('img')[0];
+    const el = document.getElementsByTagName('h1')[0];
     el.scrollIntoView({ block: 'end' });
   }
 }
