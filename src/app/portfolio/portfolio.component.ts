@@ -24,6 +24,7 @@ import { NightModeService } from '../services/night-mode.service';
 export class PortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
   pageTitle = 'Portfolio';
   errorMessage = '';
+  defaultImageUrl = 'https://via.placeholder.com/1100?text=loading...';
   isNight = this.nightModeService.isNight();
   master: Picture[] = [];
   sub: Subscription;

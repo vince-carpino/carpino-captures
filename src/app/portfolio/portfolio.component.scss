@@ -13,6 +13,7 @@ img {
   max-height: $maxHeight-mobile;
   object-fit: contain;
   cursor: pointer;
+  opacity: 0;
   transition: all 0.3s ease-in-out;
 
   @media (hover: hover) {
@@ -21,6 +22,10 @@ img {
       transition-delay: 1s;
     }
   }
+}
+
+img.ng-lazyloaded {
+  opacity: 1;
 }
 
 #grid-container {

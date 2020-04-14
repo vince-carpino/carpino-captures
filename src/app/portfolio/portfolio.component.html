@@ -5,9 +5,8 @@
 <div id="grid-container">
   <div id="grid-item" *ngFor="let pic of master">
     <img
-      [src]="pic.url"
-      [alt]="pic.title"
-      [@fadeIn]="'in'"
+      [lazyLoad]="pic.url"
+      [defaultImage]="defaultImageUrl"
       (click)="showFullSize(pic.url)"
     />
   </div>
