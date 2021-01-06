@@ -10,7 +10,7 @@ import { NightModeService } from '../services/night-mode.service';
 export class NavBarComponent implements OnInit {
   siteName = 'Carpino Captures';
   isNight = this.nightModeService.isNight();
-  instagramUrl = 'https://www.instagram.com/vince_carpino/';
+  instagramUrl = 'https://www.instagram.com/vince.carpino/';
   mailToUrl =
     'mailto:contact.carpinocaptures@gmail.com?subject=Contact Form Submission';
 

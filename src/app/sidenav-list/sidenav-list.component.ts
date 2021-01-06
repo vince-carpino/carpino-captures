@@ -9,7 +9,7 @@ import { NightModeService } from '../services/night-mode.service';
 })
 export class SidenavListComponent implements OnInit {
   isNight = this.nightModeService.isNight();
-  instagramUrl = 'https://www.instagram.com/vince_carpino/';
+  instagramUrl = 'https://www.instagram.com/vince.carpino/';
   mailToUrl =
     'mailto:contact.carpinocaptures@gmail.com?subject=Contact Form Submission';
   navLinks: NavLink[] = [
