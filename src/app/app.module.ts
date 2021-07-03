@@ -56,7 +56,7 @@ const routes = [
     NavBarModule,
     PortfolioModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     SidenavListModule
   ],
   bootstrap: [AppComponent],

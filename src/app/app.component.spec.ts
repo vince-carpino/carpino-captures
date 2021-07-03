@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutComponent } from './about/about.component';
@@ -19,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -43,28 +43,28 @@ describe('AppComponent', () => {
         MatToolbarModule,
         ReactiveFormsModule,
         RouterModule.forRoot([
-          { path: 'about', component: AboutComponent },
-          { path: 'contact', component: ContactComponent },
-          { path: '', component: PortfolioComponent, pathMatch: 'full' },
-          { path: '**', component: PortfolioComponent, pathMatch: 'full' }
-        ])
+    { path: 'about', component: AboutComponent },
+    { path: 'contact', component: ContactComponent },
+    { path: '', component: PortfolioComponent, pathMatch: 'full' },
+    { path: '**', component: PortfolioComponent, pathMatch: 'full' }
+], { relativeLinkResolution: 'legacy' })
       ]
     }).compileComponents();
   }));
 
-  xit('should create the app', async(() => {
+  xit('should create the app', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 
-  xit(`should have as title 'carpino-captures'`, async(() => {
+  xit(`should have as title 'carpino-captures'`, waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('carpino-captures');
   }));
 
-  xit('should render title in a h1 tag', async(() => {
+  xit('should render title in a h1 tag', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
