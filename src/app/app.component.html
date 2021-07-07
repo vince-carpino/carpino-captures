@@ -1,5 +1,5 @@
 <mat-sidenav-container [ngClass]="isNight ? 'night' : 'day'">
-  <mat-sidenav [ngClass]="isNight ? 'night' : 'day'" #sidenav role="navigation">
+  <mat-sidenav [fixedInViewport]="true" [ngClass]="isNight ? 'night' : 'day'" #sidenav role="navigation">
     <cc-sidenav-list (toggleSidenav)="sidenav.close()"></cc-sidenav-list>
   </mat-sidenav>
 
