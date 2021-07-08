@@ -11,7 +11,13 @@ export class PortfolioImagesService {
   private baseUrl = 'https://s3-us-west-1.amazonaws.com/carpino-captures';
   private manifestUrl = this.baseUrl + '/manifest.json';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+
+  getImagesFromManifest(): Observable<Picture[]> {
+    return this.http.get<Picture[]>(this.manifestUrl).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
@@ -23,11 +29,5 @@ export class PortfolioImagesService {
 
     console.error(errorMessage);
     return throwError(errorMessage);
-  }
-
-  getImagesFromManifest(): Observable<Picture[]> {
-    return this.http.get<Picture[]>(this.manifestUrl).pipe(
-      catchError(this.handleError)
-    );
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Picture } from '../picture/picture';
 import {
   trigger,
@@ -7,7 +7,6 @@ import {
   transition,
   animate
 } from '@angular/animations';
-import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { NightModeService } from '../services/night-mode.service';
 
@@ -21,13 +20,12 @@ import { NightModeService } from '../services/night-mode.service';
     ])
   ]
 })
-export class PortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
+export class PortfolioComponent implements OnInit, AfterViewInit {
   pageTitle = 'Portfolio';
   errorMessage = '';
   defaultImageUrl = 'https://via.placeholder.com/1100?text=loading...';
   isNight = this.nightModeService.isNight();
   master: Picture[] = [];
-  sub: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,12 +39,6 @@ export class PortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     const el = document.getElementsByTagName('router-outlet')[0];
     el.scrollIntoView({ block: 'end' });
-  }
-
-  ngOnDestroy() {
-    if (this.sub) {
-      this.sub.unsubscribe();
-    }
   }
 
   showFullSize(url: string) {
@@ -73,14 +65,6 @@ export class PortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getImagesFromS3() {
-    // this.sub = this.imageService.getImagesFromManifest().subscribe(
-    //   pics => {
-    //     pics = pics.sort(this.compareFunc);
-    //     this.master = pics;
-    //   },
-    //   error => (this.errorMessage = <any>error)
-    // );
-
     this.master = this.route.snapshot.data.images.sort(this.compareFunc);
   }
 
