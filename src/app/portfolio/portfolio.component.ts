@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Picture } from '../picture/picture';
+import { Picture } from '../interfaces/picture';
 import {
   trigger,
   state,

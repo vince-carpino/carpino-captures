@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { PortfolioImagesService } from '../services/portfolio-images.service';
-import { Picture } from '../picture/picture';
+import { Picture } from '../interfaces/picture';
 import { Observable } from 'rxjs';
 
 @Injectable()
