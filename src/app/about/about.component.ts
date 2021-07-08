@@ -7,6 +7,7 @@ import {
   animate
 } from '@angular/animations';
 import { NightModeService } from '../services/night-mode.service';
+import { BioInfoService } from '../services/bio-info.service';
 
 @Component({
   selector: 'cc-about',
@@ -22,6 +23,7 @@ import { NightModeService } from '../services/night-mode.service';
 export class AboutComponent implements OnInit {
   pageTitle = 'About Me';
   isNight = this.nightModeService.isNight();
+  // bioInfo: Observable<BioInfo>;
 
   imageUrlPrefix = 'https://s3-us-west-1.amazonaws.com/carpino-captures/';
 
@@ -29,10 +31,15 @@ export class AboutComponent implements OnInit {
     return this.imageUrlPrefix + 'me.jpg';
   }
 
-  constructor(public nightModeService: NightModeService) {}
+  constructor(
+    public nightModeService: NightModeService,
+    private bioInfoService: BioInfoService,
+  ) { }
 
   ngOnInit() {
     const el = document.getElementsByTagName('h1')[0];
     el.scrollIntoView({ block: 'end' });
+
+    // this.bioInfo = this.bioInfoService.getBioFromS3();
   }
 }
