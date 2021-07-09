@@ -20,6 +20,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioModule } from './portfolio/portfolio.module';
 import { PortfolioResolver } from './resolvers/portfolio.resolver';
 import { SidenavListModule } from './sidenav-list/sidenav-list.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes = [
   { path: 'about', component: AboutComponent },
@@ -52,6 +53,7 @@ const routes = [
     FormsModule,
     HttpClientModule,
     MatSidenavModule,
+    MatSnackBarModule,
     NavBarModule,
     PortfolioModule,
     ReactiveFormsModule,
