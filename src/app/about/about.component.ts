@@ -8,7 +8,6 @@ import {
 } from '@angular/animations';
 import { NightModeService } from '../services/night-mode.service';
 import { BioInfoService } from '../services/bio-info.service';
-import { BioInfo } from '../interfaces/bioInfo';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { SnackBarService } from '../services/snack-bar.service';
@@ -45,14 +44,16 @@ export class AboutComponent implements OnInit {
     const el = document.getElementsByTagName('h1')[0];
     el.scrollIntoView({ block: 'end' });
 
+    this.getBioInfo();
+  }
+
+  private getBioInfo() {
     this.bioInfo$ = this.bioInfoService.getBioFromS3().pipe(
       catchError((err: Error) => {
         this.snackBarService.error(err.message);
         let fillerInfo: BioInfo = {
           header: 'There should be something here...',
-          body: {
-            paragraphs: ['Something terrible has happened']
-          }
+          body: ['Something terrible has happened']
         };
         return of(fillerInfo);
       })
