@@ -22,7 +22,7 @@ export class AppComponent {
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
-    public nightModeService: NightModeService
+    public nightModeService: NightModeService,
   ) {
     this.iconsToRegister.forEach(icon => {
       this.registerSvgIcon(icon);
@@ -33,7 +33,7 @@ export class AppComponent {
     this.matIconRegistry.addSvgIcon(
       iconName,
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        `./assets/svg/${iconName}.svg`
+        `./assets/svg/${ iconName }.svg`
       )
     );
   }

@@ -7,4 +7,4 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [AboutComponent],
   exports: [AboutComponent]
 })
-export class AboutModule {}
+export class AboutModule { }

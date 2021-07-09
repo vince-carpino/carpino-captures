@@ -31,7 +31,7 @@ export class ContactComponent implements OnInit, OnDestroy {
   pageTitle = 'Contact';
 
   contactForm: FormGroup;
-  emailSubscription: Subscription;
+  emailSubscription: Subscription = new Subscription();
   sendingMessage = 'Sending...';
   sendingConfig = { panelClass: ['snack-bar-sending'] };
   successMessage = 'Sent!';
@@ -72,8 +72,8 @@ export class ContactComponent implements OnInit, OnDestroy {
         return this.email.hasError('required')
           ? 'Please enter a value'
           : this.email.hasError('email')
-          ? 'Invalid email'
-          : '';
+            ? 'Invalid email'
+            : '';
       case 'message':
         return this.message.hasError('required') ? 'Please enter a value' : '';
       default:
@@ -110,10 +110,10 @@ export class ContactComponent implements OnInit, OnDestroy {
     const { name, email, message } = this.contactForm.value;
     const date = Date();
     const html = `
-      <div>From: ${name}</div>
-      <div>Email: <a href="mailto:${email}">${email}</a></div>
-      <div>Date: ${date}</div>
-      <div>Message: ${message}</div>
+      <div>From: ${ name }</div>
+      <div>Email: <a href="mailto:${ email }">${ email }</a></div>
+      <div>Date: ${ date }</div>
+      <div>Message: ${ message }</div>
     `;
     const formRequest = { name, email, message, date, html };
     this.db.collection('/messages').add(formRequest);
@@ -132,7 +132,7 @@ export class ContactComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnDestroy() {
     if (this.emailSubscription) {

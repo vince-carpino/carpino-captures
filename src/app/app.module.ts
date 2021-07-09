@@ -7,7 +7,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AboutComponent } from './about/about.component';
 import { AboutModule } from './about/about.module';
 import { AppComponent } from './app.component';
@@ -62,4 +61,4 @@ const routes = [
   bootstrap: [AppComponent],
   providers: [PortfolioResolver]
 })
-export class AppModule {}
+export class AppModule { }
