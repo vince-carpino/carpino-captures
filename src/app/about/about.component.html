@@ -11,20 +11,14 @@
     </figcaption>
   </figure>
 
-  <mat-card [ngClass]="isNight ? 'night' : 'day'">
+  <mat-card *ngIf="bioInfo$ | async as bioInfo" [ngClass]="isNight ? 'night' : 'day'">
     <mat-card-title>
-      My name is Vince Carpino
+      {{ bioInfo.header }}
     </mat-card-title>
     <mat-card-content>
-      I'm a Computer Science graduate from Chapman
-      University in Orange, CA.<br /><br />
-      My interest in photography goes back several years to my first "real"
-      camera, a Nikon 1 V2. I took it on a trip to Central Europe, photos from
-      which you'll see here.<br /><br />
-      Recently (and after far too long) I upgraded to a Nikon D5600 and quickly
-      fell in love with the larger format DSLR. However, soon afterwards, it
-      came time to make one last upgrade to a Nikon D750, a full-frame DSLR and
-      my absolute favorite of the bunch, hands down.
+      <p *ngFor="let p of bioInfo.body.paragraphs">
+        {{ p }}
+      </p>
     </mat-card-content>
   </mat-card>
 </span>
