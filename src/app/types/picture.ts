@@ -1,5 +1,5 @@
-export interface Picture {
+type Picture = {
   url: string;
   fav: boolean;
   title: string;
-}
+};
