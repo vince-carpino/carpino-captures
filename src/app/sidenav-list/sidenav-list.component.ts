@@ -10,20 +10,18 @@ import { NightModeService } from '../services/night-mode.service';
 export class SidenavListComponent implements OnInit {
   isNight = this.nightModeService.isNight();
   instagramUrl = 'https://www.instagram.com/vince.carpino/';
-  mailToUrl =
-    'mailto:contact.carpinocaptures@gmail.com?subject=Contact Form Submission';
   navLinks: NavLink[] = [
     { title: 'Home', url: '/', iconName: 'home' },
     { title: 'Instagram', url: this.instagramUrl, iconName: 'instagram-icon' },
-    { title: 'About', url: '/about', iconName: 'person' }
-    // { title: 'Contact', url: '/contact', iconName: 'email' }
+    { title: 'About', url: '/about', iconName: 'person' },
+    { title: 'Contact', url: '/contact', iconName: 'email' }
   ];
 
   @Output() public toggleSidenav = new EventEmitter();
 
-  constructor(public nightModeService: NightModeService) {}
+  constructor(public nightModeService: NightModeService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   closeSidenav() {
     this.toggleSidenav.emit();
