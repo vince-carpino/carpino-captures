@@ -24,7 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes = [
   { path: 'about', component: AboutComponent },
-  // { path: 'contact', component: ContactComponent },
+  { path: 'contact', component: ContactComponent },
   {
     path: '',
     component: PortfolioComponent,

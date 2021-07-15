@@ -1,12 +1,10 @@
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   Validators,
   FormGroup,
   FormBuilder
 } from '@angular/forms';
-import { ContactFormEmailService } from '../services/contact-form-email.service';
 import {
   trigger,
   state,
@@ -15,7 +13,9 @@ import {
   animate
 } from '@angular/animations';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Subscription } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { GOOGLE_SCRIPT_URL } from '../constants';
+import { take } from 'rxjs/operators';
 
 @Component({
   templateUrl: './contact.component.html',
@@ -27,11 +27,10 @@ import { Subscription } from 'rxjs';
     ])
   ]
 })
-export class ContactComponent implements OnInit, OnDestroy {
+export class ContactComponent implements OnInit {
   pageTitle = 'Contact';
 
   contactForm: FormGroup;
-  emailSubscription: Subscription = new Subscription();
   sendingMessage = 'Sending...';
   sendingConfig = { panelClass: ['snack-bar-sending'] };
   successMessage = 'Sent!';
@@ -64,6 +63,20 @@ export class ContactComponent implements OnInit, OnDestroy {
     }
   ];
 
+  constructor(
+    private fb: FormBuilder,
+    private snackbar: MatSnackBar,
+    private http: HttpClient,
+  ) {
+    this.contactForm = this.fb.group({
+      name: this.name,
+      email: this.email,
+      message: this.message
+    });
+  }
+
+  ngOnInit() { }
+
   getErrorMessage(field: string) {
     switch (field) {
       case 'name':
@@ -85,58 +98,25 @@ export class ContactComponent implements OnInit, OnDestroy {
     this.snackbar.open(message, '', delay);
   }
 
-  processForm() {
+  onSubmit() {
     this.openSnackbar(this.sendingMessage, this.sendingConfig);
     this.contactForm.disable();
 
-    this.sendToDb();
+    let formData: FormData = new FormData();
+    formData.append('name', this.contactForm.controls.name.value);
+    formData.append('email', this.contactForm.controls.email.value);
+    formData.append('message', this.contactForm.controls.message.value);
 
-    // this.emailSubscription = this.emailService
-    //   .sendMessage(this.contactForm.value)
-    //   .subscribe(
-    //     () => {
-    //       this.openSnackbar(this.successMessage, this.successConfig);
-    //       this.contactForm.reset();
-    //       this.contactForm.enable();
-    //     },
-    //     () => {
-    //       this.openSnackbar(this.errorMessage, this.errorConfig);
-    //       this.contactForm.enable();
-    //     }
-    //   );
-  }
-
-  sendToDb() {
-    const { name, email, message } = this.contactForm.value;
-    const date = Date();
-    const html = `
-      <div>From: ${ name }</div>
-      <div>Email: <a href="mailto:${ email }">${ email }</a></div>
-      <div>Date: ${ date }</div>
-      <div>Message: ${ message }</div>
-    `;
-    const formRequest = { name, email, message, date, html };
-    this.db.collection('/messages').add(formRequest);
-  }
-
-  constructor(
-    private fb: FormBuilder,
-    private snackbar: MatSnackBar,
-    private emailService: ContactFormEmailService,
-    private db: AngularFirestore
-  ) {
-    this.contactForm = this.fb.group({
-      name: this.name,
-      email: this.email,
-      message: this.message
+    this.http.post(GOOGLE_SCRIPT_URL, formData).pipe(take(1)).subscribe({
+      next: () => {
+        this.openSnackbar(this.successMessage, this.successConfig);
+        this.contactForm.reset();
+        this.contactForm.enable();
+      },
+      error: () => {
+        this.openSnackbar(this.errorMessage, this.errorConfig);
+        this.contactForm.enable();
+      }
     });
-  }
-
-  ngOnInit() { }
-
-  ngOnDestroy() {
-    if (this.emailSubscription) {
-      this.emailSubscription.unsubscribe();
-    }
   }
 }

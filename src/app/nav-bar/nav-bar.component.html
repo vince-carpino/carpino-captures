@@ -1,10 +1,7 @@
 <mat-toolbar [ngClass]="isNight ? 'night-toolbar' : 'day-toolbar'">
   <div fxHide.gt-sm>
     <button mat-icon-button (click)="toggleSidenav()">
-      <i
-        class="material-icons-round"
-        >menu</i
-      >
+      <i class="material-icons-round">menu</i>
     </button>
   </div>
   <div>
@@ -15,26 +12,13 @@
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.lt-md>
     <ul fxLayout fxLayoutGap="1rem" class="nav-items">
       <li *ngFor="let link of navLinks" class="nav-bar-link">
-        <button
-          mat-button
-          (click)="navButtonClicked(link)"
-          [routerLink]="[getUrlFromLink(link)]"
-        >
-          <mat-icon
-            *ngIf="link === navLinks[1]"
-            [svgIcon]="link.iconName"
-          ></mat-icon>
+        <button mat-button (click)="navButtonClicked(link)" [routerLink]="link.url">
+          <mat-icon *ngIf="link === navLinks[1]" [svgIcon]="link.iconName"></mat-icon>
           <i *ngIf="link !== navLinks[1]" class="material-icons-round">
             {{ link.iconName }}
           </i>
           {{ link.title | lowercase }}
         </button>
-      </li>
-      <li class="nav-bar-link">
-        <a mat-button href="{{ mailToUrl }}">
-          <i class="material-icons-round">email</i>
-          contact
-        </a>
       </li>
     </ul>
   </div>

@@ -9,24 +9,14 @@
     <mat-card-content *ngFor="let form of formData">
       <mat-form-field [hideRequiredMarker]="true" appearance="outline">
         <mat-label>{{ form.title }}</mat-label>
-        <input
-          matInput
-          placeholder="{{ form.placeholder }}"
-          formControlName="{{ form.controlName }}"
-          required
-        />
+        <input matInput placeholder="{{ form.placeholder }}" formControlName="{{ form.controlName }}" required />
         <mat-error *ngIf="form.control.invalid">
           {{ getErrorMessage(form.controlName) }}
         </mat-error>
       </mat-form-field>
     </mat-card-content>
 
-    <button
-      mat-button
-      (click)="sendToDb()"
-      [disabled]="contactForm.invalid"
-      id="submit"
-    >
+    <button mat-button (click)="onSubmit()" [disabled]="contactForm.invalid" id="submit">
       Submit
     </button>
   </mat-card>
